@@ -1,0 +1,229 @@
+<div class="home-roteiro">
+    <div>
+        <h2>Roteiro de Entregas</h2>
+        <h4>
+            <h2>Data do roteiro {{data}}</h2>
+            <br>
+        </h4>
+    </div>
+    <div class="botoes">
+        <div routerLink="/roteiro/adicionar"><button class="button-menu">Adicionar ao Roteiro</button></div>
+        <div routerLink="/roteiro/imprimir"><button class="button-menu">Imprimir Roteiro</button></div>
+        <div routerLink="/roteiro/fechar"><button class="button-menu">Fechar Roteiro</button></div>
+    </div>
+    <br>
+    <div>
+        <div class="manha1">
+            <h3>Entregas antes das 10:00</h3>
+            <table width="80%">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Observação</th>
+                    <th>Cartão</th>
+                    <th>Loja/Polimédica</th>
+                    <th>Pedido/NF</th>
+                    <th>Dinheiro/Cheque</th>
+                    <th>Troco</th>
+                    <th>Vendedor</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="manha2">
+            <h3>Entregas entre 10:00 e 12:00</h3>
+            <table width="80%">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Observação</th>
+                    <th>Cartão</th>
+                    <th>Loja/Polimédica</th>
+                    <th>Pedido/NF</th>
+                    <th>Dinheiro/Cheque</th>
+                    <th>Troco</th>
+                    <th>Vendedor</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="tarde1">
+            <h3>Entregas entre 14:00 e 16:00</h3>
+            <table width="80%">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Observação</th>
+                    <th>Cartão</th>
+                    <th>Loja/Polimédica</th>
+                    <th>Pedido/NF</th>
+                    <th>Dinheiro/Cheque</th>
+                    <th>Troco</th>
+                    <th>Vendedor</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="tarde2">
+            <h3>Entregas entre 16:00 e 18:00</h3>
+            <table width="80%">
+                <tr>
+                    <th>Cliente</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Observação</th>
+                    <th>Cartão</th>
+                    <th>Loja/Polimédica</th>
+                    <th>Pedido/NF</th>
+                    <th>Dinheiro/Cheque</th>
+                    <th>Troco</th>
+                    <th>Vendedor</th>
+                    <th>Responsável</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ cliente?.nome }}</td>
+                    <td>{{ cliente?.cidade }}</td>
+                    <td>{{ cliente?.bairro }}</td>
+                    <td>{{ cliente?.observacao }}</td>
+                    <td>{{ cliente?.cartao }}</td>
+                    <td>{{ cliente?.lojaPolimedica }}</td>
+                    <td>{{ cliente?.pedidoNF }}</td>
+                    <td>{{ cliente?.valor }}</td>
+                    <td>{{ cliente?.troco }}</td>
+                    <td>{{ cliente?.vendedor }}</td>
+                    <td>{{ cliente?.responsavel }}</td>
+                    <td>
+                        <button class="button-edit">Editar</button>
+                        <button class="button-edit">Excluir</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

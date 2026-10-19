@@ -1,0 +1,47 @@
+
+form {
+  margin: auto;
+  width: 50%;
+  background-color: #bafbba;
+  padding: 25px;
+}
+table {
+  font-family: arial, sans-serif;
+  font-size: 20px;
+  border-collapse: collapse;
+  width: 70%;
+  margin: auto;
+}
+
+td, th {
+  border: 1px solid #a7f192;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #aff39c;
+}
+select {
+    width: 100%;
+    font-size: 20px;
+    padding: 5px;
+}
+input {
+    width: 99%;
+    font-size: 20px;
+    padding: 5px;
+}
+.table-body {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.perror {
+  font-size: 14px;
+  color: red;
+}
+.pok {
+  font-size: 14px;
+  color: green;
+  font-weight: bold;
+}

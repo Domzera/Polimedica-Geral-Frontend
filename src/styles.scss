@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.button-menu {
+  background-color: hsl(108, 72%, 52%);
+  color: #1f4324;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button-edit {
+  background-color: hsl(108, 83%, 46%);
+  color: #1f4324;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px;
+  height: 30px;
+  cursor: pointer;
+}
+input {
+  border-radius: 7px;
+}
