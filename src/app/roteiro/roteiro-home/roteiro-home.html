@@ -2,7 +2,7 @@
     <div>
         <h2>Roteiro de Entregas</h2>
         <h4>
-            <h2>Data do roteiro {{data}}</h2>
+            <h2>Data do roteiro {{ dataSelecionada | date: 'dd/MM/yyyy' }}</h2>
             <br>
         </h4>
     </div>
@@ -14,7 +14,6 @@
     <br>
     <div>
         <div class="manha1">
-            <h3>Entregas antes das 10:00</h3>
             <table width="80%">
                 <tr>
                     <th>Cliente</th>
@@ -28,202 +27,102 @@
                     <th>Troco</th>
                     <th>Vendedor</th>
                     <th>Responsável</th>
-                    <th>Ações</th>
+                    <th colspan="2" >Ações</th>
                 </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
+                @for(roteiro of listaDeRoteiros; track roteiro){
+                    @if(roteiro.periodo == '1'){
+                        <tr>
+                            <th class="periodo" colspan="12"><h4>Primeiras entregas da manhã</h4></th>
+                        </tr>
+                        <tr>
+                        <th class="cliente">{{ roteiro.cliente }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cidade }}</th>
+                        <th class="cliente">{{ roteiro.bairro }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cartao }}</th>
+                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                        <th class="cliente">{{ roteiro.troco }}</th>
+                        <th class="cliente">{{ roteiro.vendedor }}</th>
+                        <th class="cliente">{{ roteiro.responsavel }}</th>
+                        <th class="cliente"> Editar </th>
+                        <th class="cliente"> Apagar </th>
+                    </tr>
+                    }
+                    @if(roteiro.periodo == '2'){
+                        <tr>
+                            <th class="periodo" colspan="12"><h4>Entregas depois das 10:00h</h4></th>
+                        </tr>
+                        <tr>
+                        <th class="cliente">{{ roteiro.cliente }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cidade }}</th>
+                        <th class="cliente">{{ roteiro.bairro }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cartao }}</th>
+                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                        <th class="cliente">{{ roteiro.troco }}</th>
+                        <th class="cliente">{{ roteiro.vendedor }}</th>
+                        <th class="cliente">{{ roteiro.responsavel }}</th>
+                        <th class="cliente"> Editar </th>
+                        <th class="cliente"> Apagar </th>
+                    </tr>
+                    }
+                    @if(roteiro.periodo == '3'){
+                        <tr>
+                            <th class="periodo" colspan="12"><h4>Primeiras entregas da tarde</h4></th>
+                        </tr>
+                        <tr>
+                        <th class="cliente">{{ roteiro.cliente }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cidade }}</th>
+                        <th class="cliente">{{ roteiro.bairro }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cartao }}</th>
+                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                        <th class="cliente">{{ roteiro.troco }}</th>
+                        <th class="cliente">{{ roteiro.vendedor }}</th>
+                        <th class="cliente">{{ roteiro.responsavel }}</th>
+                        <th class="cliente"> Editar </th>
+                        <th class="cliente"> Apagar </th>
+                    </tr>
+                    }
+                    @if(roteiro.periodo == '4'){
+                        <tr>
+                            <th class="periodo" colspan="12"><h4>Entregas depois das 13:30h</h4></th>
+                        </tr>
+                        <tr>
+                        <th class="cliente">{{ roteiro.cliente }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cidade }}</th>
+                        <th class="cliente">{{ roteiro.bairro }}</th>
+                        <th class="cliente">{{ roteiro.observacao }}</th>
+                        <th class="cliente">{{ roteiro.cartao }}</th>
+                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                        <th class="cliente">{{ roteiro.troco }}</th>
+                        <th class="cliente">{{ roteiro.vendedor }}</th>
+                        <th class="cliente">{{ roteiro.responsavel }}</th>
+                        <th class="cliente"> Editar </th>
+                        <th class="cliente"> Apagar </th>
+                    </tr>
+                    }
+                    
+                }@empty {
+                    <tr><th colspan="12"><h3>Nenhum roteiro encontrado.</h3></th></tr>
+                }
+
             </table>
         </div>
         <div class="manha2">
-            <h3>Entregas entre 10:00 e 12:00</h3>
-            <table width="80%">
-                <tr>
-                    <th>Cliente</th>
-                    <th>Cidade</th>
-                    <th>Bairro</th>
-                    <th>Observação</th>
-                    <th>Cartão</th>
-                    <th>Loja/Polimédica</th>
-                    <th>Pedido/NF</th>
-                    <th>Dinheiro/Cheque</th>
-                    <th>Troco</th>
-                    <th>Vendedor</th>
-                    <th>Responsável</th>
-                    <th>Ações</th>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="tarde1">
-            <h3>Entregas entre 14:00 e 16:00</h3>
-            <table width="80%">
-                <tr>
-                    <th>Cliente</th>
-                    <th>Cidade</th>
-                    <th>Bairro</th>
-                    <th>Observação</th>
-                    <th>Cartão</th>
-                    <th>Loja/Polimédica</th>
-                    <th>Pedido/NF</th>
-                    <th>Dinheiro/Cheque</th>
-                    <th>Troco</th>
-                    <th>Vendedor</th>
-                    <th>Responsável</th>
-                    <th>Ações</th>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="tarde2">
-            <h3>Entregas entre 16:00 e 18:00</h3>
-            <table width="80%">
-                <tr>
-                    <th>Cliente</th>
-                    <th>Cidade</th>
-                    <th>Bairro</th>
-                    <th>Observação</th>
-                    <th>Cartão</th>
-                    <th>Loja/Polimédica</th>
-                    <th>Pedido/NF</th>
-                    <th>Dinheiro/Cheque</th>
-                    <th>Troco</th>
-                    <th>Vendedor</th>
-                    <th>Responsável</th>
-                    <th>Ações</th>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{ cliente?.nome }}</td>
-                    <td>{{ cliente?.cidade }}</td>
-                    <td>{{ cliente?.bairro }}</td>
-                    <td>{{ cliente?.observacao }}</td>
-                    <td>{{ cliente?.cartao }}</td>
-                    <td>{{ cliente?.lojaPolimedica }}</td>
-                    <td>{{ cliente?.pedidoNF }}</td>
-                    <td>{{ cliente?.valor }}</td>
-                    <td>{{ cliente?.troco }}</td>
-                    <td>{{ cliente?.vendedor }}</td>
-                    <td>{{ cliente?.responsavel }}</td>
-                    <td>
-                        <button class="button-edit">Editar</button>
-                        <button class="button-edit">Excluir</button>
-                    </td>
-                </tr>
-            </table>
+            
         </div>
     </div>
 </div>

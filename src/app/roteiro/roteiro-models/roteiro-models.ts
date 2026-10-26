@@ -5,12 +5,13 @@ export interface RoteiroInterface {
     bairro: string;
     observacao: string;
     cartao?: number;
-    loja_polimedica: string;
-    pedido_nf: string;
-    dinheiro_cheque?: number;
+    lojaPolimedica: string;
+    pedidoNf: string;
+    dinheiroCheque?: number;
     troco?: number;
     vendedor?: string;
     responsavel?: string;
     data?: Date | string;
     entregue?: string;
+    periodo: string;
 }

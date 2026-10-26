@@ -21,10 +21,18 @@
             <tr>
                 <td>
                     <select id="opcoes" name="opcoes"  formControlName="cidade">
-                        <option value="opcao1"></option>
-                        <option value="opcao2">Aparecida</option>
-                        <option value="opcao3">Potim</option>
-                        <option value="opcao4">Guaratinguetá</option>
+                        <option value="Aparecida">Aparecida</option>
+                        <option value="Potim">Potim</option>
+                        <option value="Guaratinguetá">Guaratinguetá</option>
+                        <option value="Roseira">Roseira</option>
+                        <option value="Pindamonhangaba">Pindamonhangaba</option>
+                        <option value="Taubaté">Taubaté</option>
+                        <option value="Cachoeira Paulista">Cahoeira Paulista</option>
+                        <option value="Lorena">Lorena</option>
+                        <option value="Cruzeiro">Cruzeiro</option>
+                        <option value="São José do Barreiro">São José do Barreiro</option>
+                        <option value="Cunha">Cunha</option>
+                        <option value="Outros">Outros:</option>
                     </select>
                     @if( roteiroForm.get('cidade')?.hasError('required')){
                         <p class="perror">O nome da cidade é obrigatóio!</p>
@@ -55,12 +63,11 @@
                     }
                 </td>
                 <td>
-                    <select id="opcoes" name="opcoes"  formControlName="loja_polimedica">
-                        <option value="opcao1"></option>
-                        <option value="opcao2">Loja</option>
-                        <option value="opcao3">Polimédica</option>
+                    <select id="opcoes" name="opcoes"  formControlName="lojaPolimedica">
+                        <option value="Loja">Loja</option>
+                        <option value="Polimédica">Polimédica</option>
                     </select>
-                    @if( roteiroForm.get('loja_polimedica')?.hasError('required')){
+                    @if( roteiroForm.get('lojaPolimedica')?.hasError('required')){
                         <p class="perror">A descrição é obrigatória!</p>
                     }@else {
                         <p class="pok">OK</p>
@@ -73,11 +80,12 @@
             </tr>
             <tr>
                 <td>
-                    <input type="text"  formControlName="cartao">
+                    <input type="number"  formControlName="cartao">
+                    <p></p>
                 </td>
                 <td>
-                    <input type="number"  formControlName="pedido_nf">
-                    @if( roteiroForm.get('pedido_nf')?.hasError('required')){
+                    <input type="text"  formControlName="pedidoNf">
+                    @if( roteiroForm.get('pedidoNf')?.hasError('required')){
                         <p class="perror">O tipo é obrigatóio!</p>
                     }@else {
                         <p class="pok">OK</p>
@@ -90,7 +98,7 @@
             </tr>
             <tr>
                 <td>
-                    <input type="number"  formControlName="dinheiro_cheque">
+                    <input type="number"  formControlName="dinheiroCheque">
                 </td>
                 <td>
                     <input type="number"  formControlName="troco">
@@ -101,17 +109,16 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <select id="opcoes" name="opcoes"  formControlName="vendedora">
-                        <option value="opcao1"></option>
-                        <option value="opcao2">Priscila</option>
-                        <option value="opcao3">Gisele</option>
-                        <option value="opcao4">Érica</option>
-                        <option value="opcao5">Claudia</option>
-                        <option value="opcao6">Daniele</option>
-                        <option value="opcao7">Lilian</option>
-                        <option value="opcao8">Outros</option>
+                    <select id="opcoes" name="opcoes"  formControlName="vendedor">
+                        <option value="Priscila">Priscila</option>
+                        <option value="Gisele">Gisele</option>
+                        <option value="Érica">Érica</option>
+                        <option value="Claudia">Claudia</option>
+                        <option value="Daniele">Daniele</option>
+                        <option value="Lilian">Lilian</option>
+                        <option value="Outros">Outros</option>
                     </select>
-                    @if( roteiroForm.get('vendedora')?.hasError('required')){
+                    @if( roteiroForm.get('vendedor')?.hasError('required')){
                         <p class="perror">O nome da vendedora é obrigatóio!</p>
                     }@else {
                         <p class="pok">OK</p>
@@ -124,14 +131,13 @@
             <tr>
                 <td colspan="2">
                     <select id="opcoes" name="opcoes" formControlName="responsavel">
-                        <option value="opcao1"></option>
-                        <option value="opcao2">Priscila</option>
-                        <option value="opcao3">Gisele</option>
-                        <option value="opcao4">Érica</option>
-                        <option value="opcao5">Claudia</option>
-                        <option value="opcao6">Daniele</option>
-                        <option value="opcao7">Lilian</option>
-                        <option value="opcao8">Outros</option>
+                        <option value="Priscila">Priscila</option>
+                        <option value="Gisele">Gisele</option>
+                        <option value="Érica">Érica</option>
+                        <option value="Claudia">Claudia</option>
+                        <option value="Daniele">Daniele</option>
+                        <option value="Lilian">Lilian</option>
+                        <option value="Outros">Outros</option>
                     </select>
                     @if( roteiroForm.get('responsavel')?.hasError('required')){
                         <p class="perror">O nome do responsavel é obrigatóio!</p>
@@ -154,13 +160,12 @@
                     }
                 </td>
                 <td>
-                    <select id="opcoes" name="opcoes"  formControlName="hora">
-                        <option value="opcao1"></option>
-                        <option value="opcao2">1ª da manhã</option>
-                        <option value="opcao3">2ª da manhã</option>
-                        <option value="opcao4">1ª da tarde</option>
-                        <option value="opcao5">2ª da tarde</option>
-                        <option value="opcao5">Extra</option>
+                    <select id="opcoes" name="opcoes"  formControlName="periodo">
+                        <option value="1">1ª da manhã</option>
+                        <option value="2">2ª da manhã</option>
+                        <option value="3">1ª da manhã</option>
+                        <option value="4">2ª da tarde</option>
+                        <option value="5">Extraordinária</option>
                     </select>
                     @if( roteiroForm.get('hora')?.hasError('required')){
                         <p class="perror">O periodo é obrigatóio!</p>

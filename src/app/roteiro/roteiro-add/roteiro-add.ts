@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RoteiroAddService } from './roteiro-add-service';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 
 @Component({
   imports: [FormsModule, ReactiveFormsModule, ReactiveFormsModule],
@@ -17,9 +16,12 @@ export class RoteiroAdd {
   ){}
 
   roteiroSubmit() {
-    console.log("Submi =>" + this.roteiroForm.value);
-    this.roteiroAddService.addRoteiro(this.roteiroForm.getRawValue());
-    this.ZeraForm();
+    console.log("Submi => ", this.roteiroForm.value);
+    this.roteiroAddService.setRoteiro(this.roteiroForm.getRawValue());
+    setTimeout(() =>{
+      this.ZeraForm();
+    },2000
+    );
   }
 
   roteiroForm = new FormGroup({
@@ -28,13 +30,13 @@ export class RoteiroAdd {
     bairro: new FormControl('', {validators: [Validators.required], nonNullable: true}),
     observacao: new FormControl('', {validators: [Validators.required], nonNullable: true}),
     cartao: new FormControl(0,{nonNullable: true}),
-    loja_polimedica: new FormControl('', {validators: [Validators.required], nonNullable: true}),
-    pedido_nf: new FormControl('', {validators: [Validators.required], nonNullable: true}),
-    dinheiro_cheque: new FormControl(0,{nonNullable: true}),
+    lojaPolimedica: new FormControl('', {validators: [Validators.required], nonNullable: true}),
+    pedidoNf: new FormControl('', {validators: [Validators.required], nonNullable: true}),
+    dinheiroCheque: new FormControl(0,{nonNullable: true}),
     troco: new FormControl(0,{nonNullable: true}),
-    vendedora: new FormControl('', {validators: [Validators.required], nonNullable: true}),
+    vendedor: new FormControl('', {validators: [Validators.required], nonNullable: true}),
     responsavel: new FormControl('', {validators: [Validators.required], nonNullable: true}),
-    //data: new FormControl(new Date().toISOString().substring(0, 10), [Validators.required]),
+    periodo:new FormControl('',{validators: [Validators.required], nonNullable: true}),
     data: new FormControl('',{nonNullable: true}),
     hora: new FormControl('', {validators: [Validators.required], nonNullable: true})
   });
@@ -46,14 +48,15 @@ export class RoteiroAdd {
       bairro: '',
       observacao: '',
       cartao: 0,
-      loja_polimedica: '',
-      pedido_nf: '',
-      dinheiro_cheque: 0,
+      lojaPolimedica: '',
+      pedidoNf: '',
+      dinheiroCheque: 0,
       troco: 0,
-      vendedora: '',
+      vendedor: '',
       responsavel: '',
       data:'',
       hora: '',
+      periodo: '',
     })
   }
 
