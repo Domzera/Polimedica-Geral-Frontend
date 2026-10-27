@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { ApiInterface } from '../roteiro-models/api-model';
 import { RoteiroService } from '../roteiro-service/service';
@@ -53,7 +53,8 @@ export class RoteiroHome implements OnInit {
   buscarRoteiros(dataParaBusca: Date) {
     this._service.getRoteiro(dataParaBusca).subscribe({
       next: (result: any) => {
-        console.log("Data para buscar => " + dataParaBusca)
+        console.log("Data para buscar => " + formatDate(dataParaBusca, 'dd/MM/yyyy', 'en-US'));
+
         const dadosRoteiro = result.value;
 
         if (dadosRoteiro && Array.isArray(dadosRoteiro)) {
