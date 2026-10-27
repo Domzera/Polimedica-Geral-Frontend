@@ -5,9 +5,11 @@ import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { ApiInterface } from '../roteiro-models/api-model';
 import { RoteiroService } from '../roteiro-service/service';
 import { RouterLink } from '@angular/router';
+import { ButtonComponent } from '../../components/button-component/button-component';
+import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-component';
 
 @Component({
-  imports: [RouterLink, CommonModule, ReactiveFormsModule],
+  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent,TabelaComponent],
   standalone: true, // Garanta que esteja como standalone caso use a sintaxe moderna de imports
   selector: 'app-roteiro-home',
   styleUrl: './roteiro-home.scss',

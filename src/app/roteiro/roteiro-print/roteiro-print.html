@@ -4,46 +4,6 @@
         <h2>Data do roteiro {{data}}</h2>
     </div>
     <div>
-        <table class="roteiro-print">
-            <tr>
-                <th>Feito</th>
-                <th>Cliente</th>
-                <th>Cidade</th>
-                <th>Bairro</th>
-                <th>Observação</th>
-                <th>Cartão</th>
-                <th>Loja/Polimédica</th>
-                <th>Pedido/NF</th>
-                <th>Dinheiro/Cheque</th>
-                <th>Troco</th>
-                <th>Vendedora</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td>{{ cliente?.nome }}</td>
-                <td>{{ cliente?.cidade }}</td>
-                <td>{{ cliente?.bairro }}</td>
-                <td>{{ cliente?.observacao }}</td>
-                <td>{{ cliente?.cartao }}</td>
-                <td>{{ cliente?.lojaPolimedica }}</td>
-                <td>{{ cliente?.pedidoNF }}</td>
-                <td>{{ cliente?.valor }}</td>
-                <td>{{ cliente?.troco }}</td>
-                <td>{{ cliente.vendedor }}</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>{{ cliente?.nome }}</td>
-                <td>{{ cliente?.cidade }}</td>
-                <td>{{ cliente?.bairro }}</td>
-                <td>{{ cliente?.observacao }}</td>
-                <td>{{ cliente?.cartao }}</td>
-                <td>{{ cliente?.lojaPolimedica }}</td>
-                <td>{{ cliente?.pedidoNF }}</td>
-                <td>{{ cliente?.valor }}</td>
-                <td>{{ cliente?.troco }}</td>
-                <td>{{ cliente.vendedor }}</td>
-            </tr>
-        </table>
+        <!--<app-tabela-print-component [roteiros]="listaDeRoteiros"/>-->
     </div>
 </div>
