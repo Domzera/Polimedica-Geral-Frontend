@@ -167,7 +167,7 @@
                         <option value="4">2ª da tarde</option>
                         <option value="5">Extraordinária</option>
                     </select>
-                    @if( roteiroForm.get('hora')?.hasError('required')){
+                    @if( roteiroForm.get('periodo')?.hasError('required')){
                         <p class="perror">O periodo é obrigatóio!</p>
                     }@else {
                         <p class="pok">OK</p>
