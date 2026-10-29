@@ -11,16 +11,8 @@ import { DadosButtonmodel } from '../../roteiro-models/dados-buttonmodel';
   templateUrl: './tabela-component.html',
 })
 export class TabelaComponent {
-  entregas1: RoteiroInterface[] = [];
-  entregas2: RoteiroInterface[] = [];
-  entregas3: RoteiroInterface[] = [];
-  entregas4: RoteiroInterface[] = [];
-  entregas5: RoteiroInterface[] = [];
-
-  flag: number = 0;
-
+  
   @Input() roteiros: RoteiroInterface[] = [];
   @Output() dados: DadosButtonmodel = { data: '', periodo: '' };
-
 
 }

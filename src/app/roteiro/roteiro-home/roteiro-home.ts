@@ -10,21 +10,27 @@ import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-co
 
 @Component({
   imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent],
-  standalone: true, // Garanta que esteja como standalone caso use a sintaxe moderna de imports
+  standalone: true,
   selector: 'app-roteiro-home',
   styleUrl: './roteiro-home.scss',
   templateUrl: './roteiro-home.html',
 })
-export class RoteiroHome implements OnInit {  
+export class RoteiroHome implements OnInit {
   listaDeRoteiros: RoteiroInterface[] = [];
   listaApiRoteiro: ApiInterface[] = [];
+  //Separação de periodos de entrega
+  entregas1:RoteiroInterface[]=[];
+  entregas2:RoteiroInterface[]=[];
+  entregas3:RoteiroInterface[]=[];
+  entregas4:RoteiroInterface[]=[];
+  entregas5:RoteiroInterface[]=[];
 
   // Instanciamos o FormGroup
   data = new FormGroup({
     dataSelecionada: new FormControl<string | null>(null) // Input date nativo usa string (YYYY-MM-DD)
   });
 
-  today: Date =  new Date();
+  today: Date = new Date();
 
   constructor(
     private _service: RoteiroService,
@@ -39,7 +45,7 @@ export class RoteiroHome implements OnInit {
     this.data.get('dataSelecionada')?.valueChanges.subscribe((valorString) => {
       const objetoDate = new Date(`${valorString}T00:00:00`);
       this.buscarRoteiros(objetoDate);
-      this.today=objetoDate;;
+      this.today = objetoDate;;
     });
   }
 
@@ -67,6 +73,27 @@ export class RoteiroHome implements OnInit {
               periodo: roteiro.periodo
             };
           }).sort((a, b) => a.periodo.localeCompare(b.periodo));
+
+          //console.log("Lenth => " + this.listaDeRoteiros.length);
+          this.listaDeRoteiros.forEach((roteiro) => {
+            switch(roteiro.periodo){
+              case '0':
+                this.entregas1.push(roteiro);
+                break;
+              case '1':
+                this.entregas2.push(roteiro);
+                break;
+              case '2':
+                this.entregas3.push(roteiro);
+                break;
+              case '3':
+                this.entregas4.push(roteiro);
+                break;
+              case '4':
+                this.entregas5.push(roteiro);
+                break;
+              }
+          });
 
           this._cdr.detectChanges();
         } else {

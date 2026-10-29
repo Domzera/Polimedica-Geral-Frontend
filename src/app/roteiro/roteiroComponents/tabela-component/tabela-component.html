@@ -14,24 +14,15 @@
         <th colspan="2">Ações</th>
     </tr>
 
-    @if(roteiros.length > 0){
-        @foreach(item of roteiros; track item){
-            
-        }
-    }
-
-
-
     <!-- @let roteiro = roteiros; -->
 
-    <!-- @if(roteiros.length > 0){
-        @for(roteiro of roteiros; track roteiro ){
+    @if(roteiros.length > 0){
+        @for(roteiro of roteiros; track roteiro){
             @if(roteiro.periodo == '0'){
                 <tr>
                     <th colspan="3">
                         <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir"
-                            [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
+                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
                         </div>
                     </th>
                     <th colspan="10">
@@ -39,7 +30,7 @@
                         <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
                     </th>
                 </tr>
-                @for(roteiro of roteiros; track roteiro.periodo == '0'){
+                @if(roteiro.periodo == '0'){
                     <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
@@ -52,8 +43,8 @@
                         <th class="cliente">{{ roteiro.troco }}</th>
                         <th class="cliente">{{ roteiro.vendedor }}</th>
                         <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar"/></th>
-                        <th class="cliente"><app-button-component intext="pagar"/></th>
+                        <th class="cliente"><app-button-component intext="Editar" /></th>
+                        <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
                 }
             }
@@ -61,8 +52,7 @@
                 <tr>
                     <th colspan="3">
                         <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir"
-                            [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
+                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
                         </div>
                     </th>
                     <th colspan="10">
@@ -70,7 +60,7 @@
                         <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
                     </th>
                 </tr>
-                @for(roteiro of roteiros; track roteiro.periodo == '1'){
+                @if(roteiro.periodo == '1'){
                     <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
@@ -83,17 +73,16 @@
                         <th class="cliente">{{ roteiro.troco }}</th>
                         <th class="cliente">{{ roteiro.vendedor }}</th>
                         <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar"/></th>
-                        <th class="cliente"><app-button-component intext="pagar"/></th>
+                        <th class="cliente"><app-button-component intext="Editar" /></th>
+                        <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }
+                }                
             }
             @if(roteiro.periodo == '2'){
                 <tr>
                     <th colspan="3">
                         <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir"
-                            [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
+                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
                         </div>
                     </th>
                     <th colspan="10">
@@ -101,7 +90,7 @@
                         <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
                     </th>
                 </tr>
-                @for(roteiro of roteiros; track roteiro.periodo == '2'){
+                @if(roteiro.periodo == '2'){
                     <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
@@ -114,8 +103,8 @@
                         <th class="cliente">{{ roteiro.troco }}</th>
                         <th class="cliente">{{ roteiro.vendedor }}</th>
                         <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar"/></th>
-                        <th class="cliente"><app-button-component intext="pagar"/></th>
+                        <th class="cliente"><app-button-component intext="Editar" /></th>
+                        <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
                 }
             }
@@ -123,8 +112,7 @@
                 <tr>
                     <th colspan="3">
                         <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir"
-                            [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
+                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
                         </div>
                     </th>
                     <th colspan="10">
@@ -132,7 +120,7 @@
                         <p>{{ roteiro.periodo }}</p>
                     </th>
                 </tr>
-                @for(roteiro of roteiros; track roteiro.periodo == '3'){
+                @if(roteiro.periodo == '3'){
                     <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
@@ -145,8 +133,8 @@
                         <th class="cliente">{{ roteiro.troco }}</th>
                         <th class="cliente">{{ roteiro.vendedor }}</th>
                         <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar"/></th>
-                        <th class="cliente"><app-button-component intext="pagar"/></th>
+                        <th class="cliente"><app-button-component intext="Editar" /></th>
+                        <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
                 }
             }
@@ -154,16 +142,15 @@
                 <tr>
                     <th colspan="3">
                         <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir"
-                            [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
+                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
                         </div>
                     </th>
                     <th colspan="10">
-                        <h4>Primeiras entregas da manhã</h4>
-                        <p>{{ roteiro.periodo }}</p>
+                        <h4>Entregas EXTRAS</h4>
+                        <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
                     </th>
                 </tr>
-                @for(roteiro of roteiros; track roteiro.periodo == '4'){
+                @if(roteiro.periodo == '4'){
                     <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
@@ -176,17 +163,17 @@
                         <th class="cliente">{{ roteiro.troco }}</th>
                         <th class="cliente">{{ roteiro.vendedor }}</th>
                         <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar"/></th>
-                        <th class="cliente"><app-button-component intext="pagar"/></th>
+                        <th class="cliente"><app-button-component intext="Editar" /></th>
+                        <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
                 }
             }
         }
-    }@else {
-        <tr>
-            <th colspan="12">
-                <h3>Nenhum roteiro encontrado. Componente</h3>
-            </th>
-        </tr>
-    } -->
+        }@else {
+            <tr>
+                <th colspan="12">
+                    <h3>Nenhum roteiro encontrado. Componente</h3>
+                </th>
+            </tr>
+        }
 </table>
