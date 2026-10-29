@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule, formatDate } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { ApiInterface } from '../roteiro-models/api-model';
 import { RoteiroService } from '../roteiro-service/service';
@@ -9,22 +9,22 @@ import { ButtonComponent } from '../../components/button-component/button-compon
 import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-component';
 
 @Component({
-  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent,TabelaComponent],
+  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent],
   standalone: true, // Garanta que esteja como standalone caso use a sintaxe moderna de imports
   selector: 'app-roteiro-home',
   styleUrl: './roteiro-home.scss',
   templateUrl: './roteiro-home.html',
 })
-export class RoteiroHome implements OnInit {
+export class RoteiroHome implements OnInit {  
   listaDeRoteiros: RoteiroInterface[] = [];
   listaApiRoteiro: ApiInterface[] = [];
-  
+
   // Instanciamos o FormGroup
   data = new FormGroup({
     dataSelecionada: new FormControl<string | null>(null) // Input date nativo usa string (YYYY-MM-DD)
   });
 
-  today: Date = new Date();
+  today: Date =  new Date();
 
   constructor(
     private _service: RoteiroService,
@@ -37,17 +37,9 @@ export class RoteiroHome implements OnInit {
 
     // 2. Escuta quando o usuário muda a data no input
     this.data.get('dataSelecionada')?.valueChanges.subscribe((valorString) => {
-      if (valorString) {
-        // Se tiver data enviada, converte a string 'YYYY-MM-DD' para objeto Date
-        // Adicionamos o 'T00:00:00' para evitar problemas de fuso horário local
-        this.today = new Date(`${valorString}T00:00:00`);
-      } else {
-        // Se não tiver data (limpou o campo), usa a data de hoje
-        this.today = new Date();
-      }
-      
-      // Busca novamente os roteiros com a nova data atualizada
-      this.buscarRoteiros(this.today);
+      const objetoDate = new Date(`${valorString}T00:00:00`);
+      this.buscarRoteiros(objetoDate);
+      this.today=objetoDate;;
     });
   }
 
@@ -55,7 +47,6 @@ export class RoteiroHome implements OnInit {
   buscarRoteiros(dataParaBusca: Date) {
     this._service.getRoteiro(dataParaBusca).subscribe({
       next: (result: any) => {
-        console.log("Data para buscar => " + formatDate(dataParaBusca, 'dd/MM/yyyy', 'en-US'));
 
         const dadosRoteiro = result.value;
 
@@ -77,7 +68,6 @@ export class RoteiroHome implements OnInit {
             };
           }).sort((a, b) => a.periodo.localeCompare(b.periodo));
 
-          console.log("Quantidade de clientes: => ", this.listaDeRoteiros.length);
           this._cdr.detectChanges();
         } else {
           this.listaDeRoteiros = []; // Limpa a lista caso não retorne dados

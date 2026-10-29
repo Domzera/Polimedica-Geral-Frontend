@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DadosButtonmodel } from '../../roteiro/roteiro-models/dados-buttonmodel';
 
 @Component({
   imports: [],
@@ -8,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
 @Input() intext: string = '';
+@Input() Dados?: DadosButtonmodel;
 }

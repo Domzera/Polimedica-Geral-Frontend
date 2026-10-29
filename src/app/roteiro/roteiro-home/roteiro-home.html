@@ -9,14 +9,7 @@
             <label for="novaData">Escolha outra data de roteiro => </label>
             
             <!-- formControlName alterado para o nome correto declarado no TS: 'dataSelecionada' -->
-            <input type="date" id="novaData" formControlName="dataSelecionada"> 
-
-            <!-- Correção dos blocos de validação apontando para o controle correto -->
-            @if(data.get('dataSelecionada')?.hasError('required') && (data.get('dataSelecionada')?.touched || data.get('dataSelecionada')?.dirty)){
-                <p class="perror">A data é obrigatória!</p>
-            } @else if(data.get('dataSelecionada')?.valid && data.get('dataSelecionada')?.value){
-                <p class="pok">OK</p>
-            }
+            <input type="date" id="novaData" formControlName="dataSelecionada">
         </div>
         <br>
     </div>

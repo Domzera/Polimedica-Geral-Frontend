@@ -16,10 +16,12 @@ export class RoteiroService {
   }
 
   getRoteiro(data?: Date): Observable<ApiInterface[]> {
-    let params =new HttpParams();
-    if(data){
-      params = params.set('data', data.toISOString().split('T')[0]);
-    }
-    return this._http.get<ApiInterface[]>(this._url + '/roteiro', { params });
+    const ano = data!.getFullYear();
+    const mes = data!.getMonth() + 1;
+    const dia = data!.getDate();
+
+    const url = `${this._url}/roteiro/${ano}/${mes}/${dia}`;
+
+    return this._http.get<ApiInterface[]>(url);
   }
 }

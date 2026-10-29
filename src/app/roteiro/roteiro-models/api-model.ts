@@ -11,7 +11,7 @@ export interface ApiInterface {
     troco?: number;
     vendedor?: string;
     responsavel?: string;
-    data?: Date | string;
+    data?: string;
     entregue?: string;
     periodo: string;
 }
