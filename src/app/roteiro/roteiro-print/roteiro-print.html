@@ -1,10 +1,59 @@
 <div class="print_body">
-    <div>
-        <h2>Roteiro de Entregas</h2>
-        <h2>Data do roteiro {{data}}</h2>
-        <h3>Periodo {{periodo}}</h3>
+    <div class="printable">
+        <div>
+            <h2>Roteiro de Entregas</h2>
+            @if(periodo == '0'){
+            <h3>Primeiras entregas da manhã</h3>
+            }
+            @if(periodo == '1'){
+            <h3>Entregas depois das 10:00h da manhã</h3>
+            }
+            @if(periodo == '2'){
+            <h3>Primeiras entregas da tarde</h3>
+            }
+            @if(periodo == '3'){
+            <h3>Entregas depois das 16:00 da tarde</h3>
+            }
+            @if(periodo == '4'){
+            <h3>Entregas EXTRAS</h3>
+            }
+        </div>
+        <div>
+            <table>
+                <tr class="roteiro-print">
+                    <th>Feito</th>
+                    <th>Cliente</th>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                    <th>Observação</th>
+                    <th>Cartão</th>
+                    <th>Loja/Polimédica</th>
+                    <th>Pedido/NF</th>
+                    <th>Dinheiro/Cheque</th>
+                    <th>Troco</th>
+                    <th>Vendedora</th>
+                    <th>Responsavel</th>
+                </tr>
+                @for (item of roteiros; track item) {
+                @if(item.periodo == periodo){
+                <tr>
+                    <th></th>
+                    <th>{{ item.cliente }}</th>
+                    <th>{{ item.cidade }}</th>
+                    <th>{{ item.bairro }}</th>
+                    <th>{{ item.observacao }}</th>
+                    <th>{{ item.cartao }}</th>
+                    <th>{{ item.lojaPolimedica }}</th>
+                    <th>{{ item.pedidoNf }}</th>
+                    <th>{{ item.dinheiroCheque }}</th>
+                    <th>{{ item.troco }}</th>
+                    <th>{{ item.vendedor }}</th>
+                    <th>{{ item.responsavel }}</th>
+                </tr>
+                }
+                }
+            </table>
+        </div>
     </div>
-    <div>
-        <!--<app-tabela-print-component [roteiros]="listaDeRoteiros"/>-->
-    </div>
+    <app-button-component (click)="imprimir()" intext="Imprimir" />
 </div>

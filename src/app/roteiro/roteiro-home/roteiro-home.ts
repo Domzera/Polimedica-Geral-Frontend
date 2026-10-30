@@ -77,19 +77,19 @@ export class RoteiroHome implements OnInit {
           //console.log("Lenth => " + this.listaDeRoteiros.length);
           this.listaDeRoteiros.forEach((roteiro) => {
             switch(roteiro.periodo){
-              case '0':
+              case '1':
                 this.entregas1.push(roteiro);
                 break;
-              case '1':
+              case '2':
                 this.entregas2.push(roteiro);
                 break;
-              case '2':
+              case '3':
                 this.entregas3.push(roteiro);
                 break;
-              case '3':
+              case '4':
                 this.entregas4.push(roteiro);
                 break;
-              case '4':
+              case '5':
                 this.entregas5.push(roteiro);
                 break;
               }

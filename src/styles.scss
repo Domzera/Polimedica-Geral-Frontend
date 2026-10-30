@@ -27,3 +27,23 @@
 input {
   border-radius: 7px;
 }
+
+@media print {
+  /* Oculta tudo na tela ao imprimir */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Mantém visível apenas o componente/container marcado e seus filhos */
+  .printable, .printable * {
+    visibility: visible;
+  }
+  
+  /* Reposiciona o componente no topo esquerdo da página impressa */
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

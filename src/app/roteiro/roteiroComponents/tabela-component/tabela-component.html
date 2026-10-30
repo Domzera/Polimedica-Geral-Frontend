@@ -14,24 +14,20 @@
         <th colspan="2">Ações</th>
     </tr>
 
-    <!-- @let roteiro = roteiros; -->
-
     @if(roteiros.length > 0){
-        @for(roteiro of roteiros; track roteiro){
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '0'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Primeiras entregas da manhã</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '0'){
                 <tr>
-                    <th colspan="3">
-                        <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
-                        </div>
-                    </th>
-                    <th colspan="10">
-                        <h4>Primeiras entregas da manhã</h4>
-                        <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
-                    </th>
-                </tr>
-                @if(roteiro.periodo == '0'){
-                    <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
                         <th class="cliente">{{ roteiro.bairro }}</th>
@@ -46,22 +42,22 @@
                         <th class="cliente"><app-button-component intext="Editar" /></th>
                         <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }
             }
+        }
+
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '1'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Entregas da manhã depois das 10:00</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '1'){
                 <tr>
-                    <th colspan="3">
-                        <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
-                        </div>
-                    </th>
-                    <th colspan="10">
-                        <h4>Entregas da manhã depois das 10:00h</h4>
-                        <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
-                    </th>
-                </tr>
-                @if(roteiro.periodo == '1'){
-                    <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
                         <th class="cliente">{{ roteiro.bairro }}</th>
@@ -76,22 +72,22 @@
                         <th class="cliente"><app-button-component intext="Editar" /></th>
                         <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }                
             }
+        }
+
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '2'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Primeiras entregas da tarde</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '2'){
                 <tr>
-                    <th colspan="3">
-                        <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
-                        </div>
-                    </th>
-                    <th colspan="10">
-                        <h4>Primeiras entregas da Tarde</h4>
-                        <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
-                    </th>
-                </tr>
-                @if(roteiro.periodo == '2'){
-                    <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
                         <th class="cliente">{{ roteiro.bairro }}</th>
@@ -106,22 +102,22 @@
                         <th class="cliente"><app-button-component intext="Editar" /></th>
                         <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }
             }
+        }
+
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '3'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Entregas da tarde depois das 16:00</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '3'){
                 <tr>
-                    <th colspan="3">
-                        <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
-                        </div>
-                    </th>
-                    <th colspan="10">
-                        <h4>Entregas da tarde depois das 16:00h</h4>
-                        <p>{{ roteiro.periodo }}</p>
-                    </th>
-                </tr>
-                @if(roteiro.periodo == '3'){
-                    <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
                         <th class="cliente">{{ roteiro.bairro }}</th>
@@ -136,22 +132,22 @@
                         <th class="cliente"><app-button-component intext="Editar" /></th>
                         <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }
             }
+        }
+
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '4'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Entregas EXTRAS</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '4'){
                 <tr>
-                    <th colspan="3">
-                        <div routerLink="/roteiro/imprimir/">
-                            <app-button-component intext="Imprimir" [Dados]="{ periodo: roteiro.periodo, data: roteiro.data}" />
-                        </div>
-                    </th>
-                    <th colspan="10">
-                        <h4>Entregas EXTRAS</h4>
-                        <p>{{ roteiro.periodo }} - {{ roteiro.data }}</p>
-                    </th>
-                </tr>
-                @if(roteiro.periodo == '4'){
-                    <tr>
                         <th class="cliente">{{ roteiro.cliente }}</th>
                         <th class="cliente">{{ roteiro.cidade }}</th>
                         <th class="cliente">{{ roteiro.bairro }}</th>
@@ -166,14 +162,14 @@
                         <th class="cliente"><app-button-component intext="Editar" /></th>
                         <th class="cliente"><app-button-component intext="pagar" /></th>
                     </tr>
-                }
             }
         }
-        }@else {
-            <tr>
-                <th colspan="12">
-                    <h3>Nenhum roteiro encontrado. Componente</h3>
-                </th>
-            </tr>
-        }
+    }
+    @else {
+        <tr>
+            <th colspan="12">
+                Não á entregas.
+            </th>
+        </tr>
+    }
 </table>
