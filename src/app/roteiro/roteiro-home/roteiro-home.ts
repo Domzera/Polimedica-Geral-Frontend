@@ -19,11 +19,11 @@ export class RoteiroHome implements OnInit {
   listaDeRoteiros: RoteiroInterface[] = [];
   listaApiRoteiro: ApiInterface[] = [];
   //Separação de periodos de entrega
-  entregas1:RoteiroInterface[]=[];
-  entregas2:RoteiroInterface[]=[];
-  entregas3:RoteiroInterface[]=[];
-  entregas4:RoteiroInterface[]=[];
-  entregas5:RoteiroInterface[]=[];
+  entregas1: RoteiroInterface[]=[];
+  entregas2: RoteiroInterface[]=[];
+  entregas3: RoteiroInterface[]=[];
+  entregas4: RoteiroInterface[]=[];
+  entregas5: RoteiroInterface[]=[];
 
   // Instanciamos o FormGroup
   data = new FormGroup({
@@ -59,6 +59,7 @@ export class RoteiroHome implements OnInit {
         if (dadosRoteiro && Array.isArray(dadosRoteiro)) {
           this.listaDeRoteiros = dadosRoteiro.map((roteiro: ApiInterface) => {
             return {
+              id: roteiro.id,
               cliente: roteiro.cliente,
               cidade: roteiro.cidade,
               bairro: roteiro.bairro,
@@ -103,6 +104,7 @@ export class RoteiroHome implements OnInit {
       },
       error: (err) => {
         console.log('Erro => ', err);
+        window.confirm('O Erro foi: ' + err);
       }
     });
   }

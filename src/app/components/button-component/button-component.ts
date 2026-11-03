@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { RoteiroInterface } from '../../roteiro/roteiro-models/roteiro-models';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 @Component({
   imports: [],
@@ -8,7 +7,11 @@ import { RoteiroInterface } from '../../roteiro/roteiro-models/roteiro-models';
   templateUrl: './button-component.html',
 })
 export class ButtonComponent {
-@Input() intext: string = '';
-@Input() roteiros: RoteiroInterface[] = [];
-@Input() periodo: string = '';
+  readonly intext = input<string>('');
+  @Output() onClick = new EventEmitter<void>();
+
+  dispararClique() {
+    this.onClick.emit();
+  }
+
 }

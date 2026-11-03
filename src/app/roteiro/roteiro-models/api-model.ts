@@ -1,5 +1,5 @@
 export interface ApiInterface {
-    id?: string;
+    id: number;
     cliente: string;
     cidade: string;
     bairro: string;

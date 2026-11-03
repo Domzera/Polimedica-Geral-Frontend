@@ -17,7 +17,7 @@
     @if(roteiros.length > 0){
         <tr>
             <th colspan="3">
-                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '0'}" >
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '1'}" >
                     <app-button-component intext="Imprimir"/>
                 </div>
             </th>
@@ -26,54 +26,26 @@
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
-            @if(roteiro.periodo == '0'){
-                <tr>
-                        <th class="cliente">{{ roteiro.cliente }}</th>
-                        <th class="cliente">{{ roteiro.cidade }}</th>
-                        <th class="cliente">{{ roteiro.bairro }}</th>
-                        <th class="cliente">{{ roteiro.observacao }}</th>
-                        <th class="cliente">{{ roteiro.cartao }}</th>
-                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
-                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                        <th class="cliente">{{ roteiro.troco }}</th>
-                        <th class="cliente">{{ roteiro.vendedor }}</th>
-                        <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar" /></th>
-                        <th class="cliente"><app-button-component intext="pagar" /></th>
-                    </tr>
-            }
-        }
-
-        <tr>
-            <th colspan="3">
-                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '1'}" >
-                    <app-button-component intext="Imprimir"/>
-                </div>
-            </th>
-            <th colspan="10">
-                <h4>Entregas da manhã depois das 10:00</h4>
-            </th>
-        </tr>
-        @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '1'){
                 <tr>
-                        <th class="cliente">{{ roteiro.cliente }}</th>
-                        <th class="cliente">{{ roteiro.cidade }}</th>
-                        <th class="cliente">{{ roteiro.bairro }}</th>
-                        <th class="cliente">{{ roteiro.observacao }}</th>
-                        <th class="cliente">{{ roteiro.cartao }}</th>
-                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
-                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                        <th class="cliente">{{ roteiro.troco }}</th>
-                        <th class="cliente">{{ roteiro.vendedor }}</th>
-                        <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar" /></th>
-                        <th class="cliente"><app-button-component intext="pagar" /></th>
-                    </tr>
+                    <th class="cliente">{{ roteiro.cliente }}</th>
+                    <th class="cliente">{{ roteiro.cidade }}</th>
+                    <th class="cliente">{{ roteiro.bairro }}</th>
+                    <th class="cliente">{{ roteiro.observacao }}</th>
+                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                    <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">{{ roteiro.vendedor }}</th>
+                    <th class="cliente">{{ roteiro.responsavel }}</th>
+                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    </app-button-component></th>
+                </tr>
             }
         }
+        
 
         <tr>
             <th colspan="3">
@@ -82,26 +54,27 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Primeiras entregas da tarde</h4>
+                <h4>Entregas da manhã depois das 10:00</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '2'){
                 <tr>
-                        <th class="cliente">{{ roteiro.cliente }}</th>
-                        <th class="cliente">{{ roteiro.cidade }}</th>
-                        <th class="cliente">{{ roteiro.bairro }}</th>
-                        <th class="cliente">{{ roteiro.observacao }}</th>
-                        <th class="cliente">{{ roteiro.cartao }}</th>
-                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
-                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                        <th class="cliente">{{ roteiro.troco }}</th>
-                        <th class="cliente">{{ roteiro.vendedor }}</th>
-                        <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar" /></th>
-                        <th class="cliente"><app-button-component intext="pagar" /></th>
-                    </tr>
+                    <th class="cliente">{{ roteiro.cliente }}</th>
+                    <th class="cliente">{{ roteiro.cidade }}</th>
+                    <th class="cliente">{{ roteiro.bairro }}</th>
+                    <th class="cliente">{{ roteiro.observacao }}</th>
+                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                    <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">{{ roteiro.vendedor }}</th>
+                    <th class="cliente">{{ roteiro.responsavel }}</th>
+                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente" ><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    </app-button-component></th>
+                </tr>
             }
         }
 
@@ -112,26 +85,27 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Entregas da tarde depois das 16:00</h4>
+                <h4>Primeiras entregas da tarde</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '3'){
                 <tr>
-                        <th class="cliente">{{ roteiro.cliente }}</th>
-                        <th class="cliente">{{ roteiro.cidade }}</th>
-                        <th class="cliente">{{ roteiro.bairro }}</th>
-                        <th class="cliente">{{ roteiro.observacao }}</th>
-                        <th class="cliente">{{ roteiro.cartao }}</th>
-                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
-                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                        <th class="cliente">{{ roteiro.troco }}</th>
-                        <th class="cliente">{{ roteiro.vendedor }}</th>
-                        <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar" /></th>
-                        <th class="cliente"><app-button-component intext="pagar" /></th>
-                    </tr>
+                    <th class="cliente">{{ roteiro.cliente }}</th>
+                    <th class="cliente">{{ roteiro.cidade }}</th>
+                    <th class="cliente">{{ roteiro.bairro }}</th>
+                    <th class="cliente">{{ roteiro.observacao }}</th>
+                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                    <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">{{ roteiro.vendedor }}</th>
+                    <th class="cliente">{{ roteiro.responsavel }}</th>
+                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    </app-button-component></th>
+                </tr>
             }
         }
 
@@ -142,26 +116,58 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Entregas EXTRAS</h4>
+                <h4>Entregas da tarde depois das 16:00</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
             @if(roteiro.periodo == '4'){
                 <tr>
-                        <th class="cliente">{{ roteiro.cliente }}</th>
-                        <th class="cliente">{{ roteiro.cidade }}</th>
-                        <th class="cliente">{{ roteiro.bairro }}</th>
-                        <th class="cliente">{{ roteiro.observacao }}</th>
-                        <th class="cliente">{{ roteiro.cartao }}</th>
-                        <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
-                        <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                        <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                        <th class="cliente">{{ roteiro.troco }}</th>
-                        <th class="cliente">{{ roteiro.vendedor }}</th>
-                        <th class="cliente">{{ roteiro.responsavel }}</th>
-                        <th class="cliente"><app-button-component intext="Editar" /></th>
-                        <th class="cliente"><app-button-component intext="pagar" /></th>
-                    </tr>
+                    <th class="cliente">{{ roteiro.cliente }}</th>
+                    <th class="cliente">{{ roteiro.cidade }}</th>
+                    <th class="cliente">{{ roteiro.bairro }}</th>
+                    <th class="cliente">{{ roteiro.observacao }}</th>
+                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                    <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">{{ roteiro.vendedor }}</th>
+                    <th class="cliente">{{ roteiro.responsavel }}</th>
+                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    </app-button-component></th>
+                </tr>
+            }
+        }
+
+        <tr>
+            <th colspan="3">
+                <div [routerLink]="['/roteiro/imprimir/']" [state]="{roteiros: roteiros, periodo: '5'}" >
+                    <app-button-component intext="Imprimir"/>
+                </div>
+            </th>
+            <th colspan="10">
+                <h4>Entregas EXTRAS</h4>
+            </th>
+        </tr>
+        @for (roteiro of roteiros; track roteiro) {
+            @if(roteiro.periodo == '5'){
+                <tr>
+                    <th class="cliente">{{ roteiro.cliente }}</th>
+                    <th class="cliente">{{ roteiro.cidade }}</th>
+                    <th class="cliente">{{ roteiro.bairro }}</th>
+                    <th class="cliente">{{ roteiro.observacao }}</th>
+                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
+                    <th class="cliente">{{ roteiro.pedidoNf }}</th>
+                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
+                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">{{ roteiro.vendedor }}</th>
+                    <th class="cliente">{{ roteiro.responsavel }}</th>
+                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    </app-button-component></th>
+                </tr>
             }
         }
     }

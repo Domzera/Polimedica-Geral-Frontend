@@ -7,7 +7,6 @@ export class RoteiroAddService {
       constructor(private readonly roteiroService: RoteiroService) {}
   
   setRoteiro(roteiro: RoteiroInterface) {
-    //Fazer os tratamentos, caso precise, aqui..
     
     // Depois envir para o post.
     this.roteiroService.addRoteiro(roteiro).subscribe({
@@ -16,6 +15,7 @@ export class RoteiroAddService {
       },
       error: (err) => {
         console.log('Error => ', err);
+        window.confirm('O Erro foi: ' + err.message.toString());
       }
     })
   }

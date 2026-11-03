@@ -1,5 +1,5 @@
 export interface RoteiroInterface {
-    id?: string;
+    id: number;
     cliente: string;
     cidade: string;
     bairro: string;
