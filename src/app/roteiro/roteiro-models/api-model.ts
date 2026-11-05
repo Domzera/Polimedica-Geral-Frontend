@@ -6,7 +6,7 @@ export interface ApiInterface {
     observacao: string;
     cartao?: number;
     lojaPolimedica: string;
-    pedidoNf: string;
+    pedidoNf?: string;
     dinheiroCheque?: number;
     troco?: number;
     vendedor?: string;

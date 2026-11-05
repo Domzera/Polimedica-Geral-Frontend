@@ -3,9 +3,10 @@ import { ButtonComponent } from '../../../components/button-component/button-com
 import { RouterLink } from '@angular/router';
 import { RoteiroInterface } from '../../roteiro-models/roteiro-models';
 import { RoteiroService } from '../../roteiro-service/service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  imports: [RouterLink, ButtonComponent],
+  imports: [RouterLink, ButtonComponent, CurrencyPipe],
   selector: 'app-tabela-component',
   styleUrl: './tabela-component.scss',
   templateUrl: './tabela-component.html',

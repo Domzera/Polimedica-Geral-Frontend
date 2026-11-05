@@ -3,16 +3,16 @@
         <div>
             <h2>Roteiro de Entregas</h2>
             @if(periodo == '1'){
-            <h3>Primeiras entregas da manhã</h3>
+            <h3>Entregas antes das 10:00h</h3>
             }
             @if(periodo == '2'){
-            <h3>Entregas depois das 10:00h da manhã</h3>
+            <h3>Entregas depois das 10:30h</h3>
             }
             @if(periodo == '3'){
-            <h3>Primeiras entregas da tarde</h3>
+            <h3>Entregas depois das 13:30h</h3>
             }
             @if(periodo == '4'){
-            <h3>Entregas depois das 16:00 da tarde</h3>
+            <h3>Entregas finais</h3>
             }
             @if(periodo == '5'){
             <h3>Entregas EXTRAS</h3>
@@ -27,9 +27,9 @@
                     <th>Bairro</th>
                     <th>Observação</th>
                     <th>Cartão</th>
-                    <th>Loja/Polimédica</th>
+                    <th>Loja/Poli</th>
                     <th>Pedido/NF</th>
-                    <th>Dinheiro/Cheque</th>
+                    <th>Dinheiro</th>
                     <th>Troco</th>
                     <th>Vendedora</th>
                     <th>Responsavel</th>
@@ -38,17 +38,17 @@
                 @if(item.periodo == periodo){
                 <tr>
                     <th></th>
-                    <th>{{ item.cliente }}</th>
-                    <th>{{ item.cidade }}</th>
-                    <th>{{ item.bairro }}</th>
-                    <th>{{ item.observacao }}</th>
-                    <th>{{ item.cartao }}</th>
-                    <th>{{ item.lojaPolimedica }}</th>
-                    <th>{{ item.pedidoNf }}</th>
-                    <th>{{ item.dinheiroCheque }}</th>
-                    <th>{{ item.troco }}</th>
-                    <th>{{ item.vendedor }}</th>
-                    <th>{{ item.responsavel }}</th>
+                    <th class="item">{{ item.cliente }}</th>
+                    <th class="item">{{ item.cidade }}</th>
+                    <th class="item">{{ item.bairro }}</th>
+                    <th class="item">{{ item.observacao }}</th>
+                    <th class="item">@if(item && item.cartao !== undefined && item.cartao !== null && item.cartao !== 0){ {{ item.cartao | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">{{ item.lojaPolimedica }}</th>
+                    <th class="item">{{ item.pedidoNf }}</th>
+                    <th class="item">@if(item && item.dinheiroCheque !== undefined && item.dinheiroCheque !== null && item.dinheiroCheque !== 0){ {{ item.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">@if(item && item.troco !== undefined && item.troco !== null && item.troco !== 0 ){ {{ item.troco | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">{{ item.vendedor }}</th>
+                    <th class="item">{{ item.responsavel }}</th>
                 </tr>
                 }
                 }

@@ -5,15 +5,18 @@
   text-align: center;
   width: 100%;
 }
+.item {
+  font-size: 12px;
+  font-weight:100;
+}
 table, th, td {
   margin:20px auto;
   border: 1px solid black;
   border-collapse: collapse;
-  font-size: 20px;
+  font-size: 16px;
   padding: 5px;
 }
 th{
-   font-size: 20px;
    text-align: left;
 }
 tr:nth-child(even) {

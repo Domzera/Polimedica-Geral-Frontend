@@ -1,5 +1,6 @@
 <div class="table-body">
     <form [formGroup]="roteiroForm" (ngSubmit)="roteiroSubmit()">
+        <div><h2>Adicionar Roteiro</h2></div>
         <table>
             <tr>
                 <th colspan="2">Cliente</th>
@@ -23,14 +24,14 @@
                     <select id="opcoes" name="opcoes"  formControlName="cidade">
                         <option value="Aparecida">Aparecida</option>
                         <option value="Potim">Potim</option>
-                        <option value="Guaratinguetá">Guaratinguetá</option>
+                        <option value="Guara">Guara</option>
                         <option value="Roseira">Roseira</option>
-                        <option value="Pindamonhangaba">Pindamonhangaba</option>
+                        <option value="Pinda">Pinda</option>
                         <option value="Taubaté">Taubaté</option>
-                        <option value="Cachoeira Paulista">Cahoeira Paulista</option>
+                        <option value="C. Paulista">C. Paulista</option>
                         <option value="Lorena">Lorena</option>
                         <option value="Cruzeiro">Cruzeiro</option>
-                        <option value="São José do Barreiro">São José do Barreiro</option>
+                        <option value="S.J. Barreiro">S. J. Barreiro</option>
                         <option value="Cunha">Cunha</option>
                         <option value="Outros">Outros:</option>
                     </select>
@@ -85,15 +86,11 @@
                 </td>
                 <td>
                     <input type="text"  formControlName="pedidoNf">
-                    @if( roteiroForm.get('pedidoNf')?.hasError('required')){
-                        <p class="perror">O tipo é obrigatóio!</p>
-                    }@else {
-                        <p class="pok">OK</p>
-                    }
+                    <p></p>
                 </td>
             </tr>
             <tr>
-                <th>Dinheiro/Cheque</th>
+                <th>Dinheiro</th>
                 <th>Troco</th>
             </tr>
             <tr>
@@ -161,11 +158,11 @@
                 </td>
                 <td>
                     <select id="opcoes" name="opcoes"  formControlName="periodo">
-                        <option value="1">1º roteiro da manhã</option>
-                        <option value="2">2º roteiro da manhã</option>
-                        <option value="3">1º roteiro da Tarde</option>
-                        <option value="4">2º roteiro da tarde</option>
-                        <option value="5">Extraordinária</option>
+                        <option value="1">Entregas antes das 10:00h</option>
+                        <option value="2">Entregas depois das 10:30h</option>
+                        <option value="3">Entregas depois das 13:30h</option>
+                        <option value="4">Entregas finais</option>
+                        <option value="5">Entregas EXTRAS</option>
                     </select>
                     @if( roteiroForm.get('periodo')?.hasError('required')){
                         <p class="perror">O periodo é obrigatóio!</p>

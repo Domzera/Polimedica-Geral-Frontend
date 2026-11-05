@@ -1,16 +1,16 @@
-<table width="80%">
+<table width="98%">
     <tr>
-        <th>Cliente</th>
-        <th>Cidade</th>
-        <th>Bairro</th>
-        <th>Observação</th>
-        <th>Cartão</th>
-        <th>Loja/Polimédica</th>
-        <th>Pedido/NF</th>
-        <th>Dinheiro/Cheque</th>
-        <th>Troco</th>
-        <th>Vendedor</th>
-        <th>Responsável</th>
+        <th style="width: 20%;">Cliente</th>
+        <th style="width: 5%;">Cidade</th>
+        <th style="width: 5%;">Bairro</th>
+        <th style="width: 40%;">Observação</th>
+        <th style="width: 5%;">Cartão</th>
+        <th style="width: 5%;">Loja/Poli</th>
+        <th style="width: 5%;">Pedido/NF</th>
+        <th style="width: 5%;">Dinheiro</th>
+        <th style="width: 5%;">Troco</th>
+        <th style="width: 10%;">Vendedor</th>
+        <th style="width: 10%;">Responsável</th>
         <th colspan="2">Ações</th>
     </tr>
 
@@ -22,7 +22,7 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Primeiras entregas da manhã</h4>
+                <h4>Entregas antes das 10:00h</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
@@ -32,14 +32,14 @@
                     <th class="cliente">{{ roteiro.cidade }}</th>
                     <th class="cliente">{{ roteiro.bairro }}</th>
                     <th class="cliente">{{ roteiro.observacao }}</th>
-                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.cartao !== undefined && roteiro.cartao !== null && roteiro.cartao !== 0){ {{ roteiro.cartao | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
                     <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.dinheiroCheque !== undefined && roteiro.dinheiroCheque !== null && roteiro.dinheiroCheque !== 0){ {{ roteiro.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="cliente">@if(roteiro && roteiro.troco !== undefined && roteiro.troco !== null && roteiro.troco !== 0 ){ {{ roteiro.troco | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
-                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar" /></th>
                     <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
                     </app-button-component></th>
                 </tr>
@@ -54,7 +54,7 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Entregas da manhã depois das 10:00</h4>
+                <h4>Entregas depois das 10:30h</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
@@ -64,15 +64,15 @@
                     <th class="cliente">{{ roteiro.cidade }}</th>
                     <th class="cliente">{{ roteiro.bairro }}</th>
                     <th class="cliente">{{ roteiro.observacao }}</th>
-                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.cartao !== undefined && roteiro.cartao !== null && roteiro.cartao !== 0){ {{ roteiro.cartao | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
                     <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.dinheiroCheque !== undefined && roteiro.dinheiroCheque !== null && roteiro.dinheiroCheque !== 0){ {{ roteiro.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="cliente">@if(roteiro && roteiro.troco !== undefined && roteiro.troco !== null && roteiro.troco !== 0 ){ {{ roteiro.troco | currency:'BRL' }} } @else{ -   }</th>
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
-                    <th class="cliente"><app-button-component intext="Editar" /></th>
-                    <th class="cliente" ><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
+                    <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar" /></th>
+                    <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
                     </app-button-component></th>
                 </tr>
             }
@@ -85,7 +85,7 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Primeiras entregas da tarde</h4>
+                <h4>Entregas depois das 13:30h</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
@@ -95,14 +95,14 @@
                     <th class="cliente">{{ roteiro.cidade }}</th>
                     <th class="cliente">{{ roteiro.bairro }}</th>
                     <th class="cliente">{{ roteiro.observacao }}</th>
-                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.cartao !== undefined && roteiro.cartao !== null && roteiro.cartao !== 0){ {{ roteiro.cartao | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
                     <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.dinheiroCheque !== undefined && roteiro.dinheiroCheque !== null && roteiro.dinheiroCheque !== 0){ {{ roteiro.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="cliente">@if(roteiro && roteiro.troco !== undefined && roteiro.troco !== null && roteiro.troco !== 0 ){ {{ roteiro.troco | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
-                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar" /></th>
                     <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
                     </app-button-component></th>
                 </tr>
@@ -116,7 +116,7 @@
                 </div>
             </th>
             <th colspan="10">
-                <h4>Entregas da tarde depois das 16:00</h4>
+                <h4>Entregas finais</h4>
             </th>
         </tr>
         @for (roteiro of roteiros; track roteiro) {
@@ -126,14 +126,14 @@
                     <th class="cliente">{{ roteiro.cidade }}</th>
                     <th class="cliente">{{ roteiro.bairro }}</th>
                     <th class="cliente">{{ roteiro.observacao }}</th>
-                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.cartao !== undefined && roteiro.cartao !== null && roteiro.cartao !== 0){ {{ roteiro.cartao | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
                     <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.dinheiroCheque !== undefined && roteiro.dinheiroCheque !== null && roteiro.dinheiroCheque !== 0){ {{ roteiro.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="cliente">@if(roteiro && roteiro.troco !== undefined && roteiro.troco !== null && roteiro.troco !== 0 ){ {{ roteiro.troco | currency:'BRL' }} } @else{ - }</th>
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
-                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar" /></th>
                     <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
                     </app-button-component></th>
                 </tr>
@@ -157,14 +157,14 @@
                     <th class="cliente">{{ roteiro.cidade }}</th>
                     <th class="cliente">{{ roteiro.bairro }}</th>
                     <th class="cliente">{{ roteiro.observacao }}</th>
-                    <th class="cliente">{{ roteiro.cartao }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.cartao !== undefined && roteiro.cartao !== null){ - } @else{ {{ roteiro.cartao | currency:'BRL' }} }</th>
                     <th class="cliente">{{ roteiro.lojaPolimedica }}</th>
                     <th class="cliente">{{ roteiro.pedidoNf }}</th>
-                    <th class="cliente">{{ roteiro.dinheiroCheque }}</th>
-                    <th class="cliente">{{ roteiro.troco }}</th>
+                    <th class="cliente">@if(roteiro && roteiro.dinheiroCheque !== undefined && roteiro.dinheiroCheque !== null){ - } @else{ {{ roteiro.dinheiroCheque | currency:'BRL' }} }</th>
+                    <th class="cliente">@if(roteiro && roteiro.troco !== undefined && roteiro.troco !== null){ - } @else{ {{ roteiro.troco | currency:'BRL' }} }</th>
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
-                    <th class="cliente"><app-button-component intext="Editar" /></th>
+                    <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar" /></th>
                     <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)">
                     </app-button-component></th>
                 </tr>

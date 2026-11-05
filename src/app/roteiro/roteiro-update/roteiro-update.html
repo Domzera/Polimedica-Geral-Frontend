@@ -1,0 +1,181 @@
+<div class="table-body">
+        <form [formGroup]="roteiroForm" (ngSubmit)="roteiroSubmit()">
+            <div><h2>Alterar Roteiro</h2></div>
+            <table>
+                <tr>
+                    <th colspan="2">Cliente</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" formControlName="cliente">
+                        @if( roteiroForm.get('cliente')?.hasError('required')){
+                        <p class="perror">O nome do cliente é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cidade</th>
+                    <th>Bairro</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="opcoes" name="opcoes" formControlName="cidade">
+                            <option value="Aparecida">Aparecida</option>
+                            <option value="Potim">Potim</option>
+                            <option value="Guara">Guara</option>
+                            <option value="Roseira">Roseira</option>
+                            <option value="Pinda">Pinda</option>
+                            <option value="Taubaté">Taubaté</option>
+                            <option value="C. Paulista">C. Paulista</option>
+                            <option value="Lorena">Lorena</option>
+                            <option value="Cruzeiro">Cruzeiro</option>
+                            <option value="S.J. Barreiro">S.J. Barreiro</option>
+                            <option value="Cunha">Cunha</option>
+                            <option value="Outros">Outros:</option>
+                        </select>
+                        @if( roteiroForm.get('cidade')?.hasError('required')){
+                        <p class="perror">O nome da cidade é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                    <td>
+                        <input type="text" formControlName="bairro">
+                        @if( roteiroForm.get('bairro')?.hasError('required')){
+                        <p class="perror">O nome do bairro é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Observação</th>
+                    <th>Loja/Polimédica</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" formControlName="observacao">
+                        @if( roteiroForm.get('observacao')?.hasError('required')){
+                        <p class="perror">A observacao é obrigatóia!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                    <td>
+                        <select id="opcoes" name="opcoes" formControlName="lojaPolimedica">
+                            <option value="Loja">Loja</option>
+                            <option value="Polimédica">Polimédica</option>
+                        </select>
+                        @if( roteiroForm.get('lojaPolimedica')?.hasError('required')){
+                        <p class="perror">A descrição é obrigatória!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cartão</th>
+                    <th>Pedido/NF</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" formControlName="cartao">
+                        <p></p>
+                    </td>
+                    <td>
+                        <input type="text" formControlName="pedidoNf">
+                        <p></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dinheiro</th>
+                    <th>Troco</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" formControlName="dinheiroCheque">
+                    </td>
+                    <td>
+                        <input type="number" formControlName="troco">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Vendedora</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select id="opcoes" name="opcoes" formControlName="vendedor">
+                            <option value="Priscila">Priscila</option>
+                            <option value="Gisele">Gisele</option>
+                            <option value="Érica">Érica</option>
+                            <option value="Claudia">Claudia</option>
+                            <option value="Daniele">Daniele</option>
+                            <option value="Lilian">Lilian</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        @if( roteiroForm.get('vendedor')?.hasError('required')){
+                        <p class="perror">O nome da vendedora é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Responsavel</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select id="opcoes" name="opcoes" formControlName="responsavel">
+                            <option value="Priscila">Priscila</option>
+                            <option value="Gisele">Gisele</option>
+                            <option value="Érica">Érica</option>
+                            <option value="Claudia">Claudia</option>
+                            <option value="Daniele">Daniele</option>
+                            <option value="Lilian">Lilian</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        @if( roteiroForm.get('responsavel')?.hasError('required')){
+                        <p class="perror">O nome do responsavel é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>Data da entrega</th>
+                    <th>Hora da entrega</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date" formControlName="data">
+                        @if( roteiroForm.get('data')?.hasError('required') && (roteiroForm.get('data')?.touched ||
+                        roteiroForm.get('data')?.dirty)){
+                        <p class="perror">A data é obrigatóia!</p>
+                        }@else if(roteiroForm.get('data')?.valid){
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                    <td>
+                        <select id="opcoes" name="opcoes" formControlName="periodo">
+                            <option value="1">Entregas antes das 10:00h</option>
+                            <option value="2">Entregas depois das 10:30h</option>
+                            <option value="3">Entregas depois das 13:30h</option>
+                            <option value="4">Entregas finais</option>
+                            <option value="5">Entregas EXTRAS</option>
+                        </select>
+                        @if( roteiroForm.get('periodo')?.hasError('required')){
+                        <p class="perror">O periodo é obrigatóio!</p>
+                        }@else {
+                        <p class="pok">OK</p>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <br>
+                    <button class="button-menu">Salvar</button>
+                </tr>
+            </table>
+        </form>
+    </div>
