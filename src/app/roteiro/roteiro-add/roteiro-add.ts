@@ -41,7 +41,7 @@ export class RoteiroAdd {
     observacao: new FormControl('', { validators: [Validators.required], nonNullable: true }),
     cartao: new FormControl(0, { nonNullable: true }),
     lojaPolimedica: new FormControl('', { validators: [Validators.required], nonNullable: true }),
-    pedidoNf: new FormControl('', { validators: [Validators.required], nonNullable: true }),
+    pedidoNf: new FormControl('',{ nonNullable: true }),
     dinheiroCheque: new FormControl(0, { nonNullable: true }),
     troco: new FormControl(0, { nonNullable: true }),
     vendedor: new FormControl('', { validators: [Validators.required], nonNullable: true }),

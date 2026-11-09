@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { ApiInterface } from '../roteiro-models/api-model';
 import { RoteiroService } from '../roteiro-service/service';
 import { RouterLink } from '@angular/router';
@@ -16,14 +15,13 @@ import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-co
   templateUrl: './roteiro-home.html',
 })
 export class RoteiroHome implements OnInit {
-  listaDeRoteiros: RoteiroInterface[] = [];
   listaApiRoteiro: ApiInterface[] = [];
   //Separação de periodos de entrega
-  entregas1: RoteiroInterface[]=[];
-  entregas2: RoteiroInterface[]=[];
-  entregas3: RoteiroInterface[]=[];
-  entregas4: RoteiroInterface[]=[];
-  entregas5: RoteiroInterface[]=[];
+  entregas1: ApiInterface[]=[];
+  entregas2: ApiInterface[]=[];
+  entregas3: ApiInterface[]=[];
+  entregas4: ApiInterface[]=[];
+  entregas5: ApiInterface[]=[];
 
   // Instanciamos o FormGroup
   data = new FormGroup({
@@ -57,7 +55,7 @@ export class RoteiroHome implements OnInit {
         const dadosRoteiro = result.value;
 
         if (dadosRoteiro && Array.isArray(dadosRoteiro)) {
-          this.listaDeRoteiros = dadosRoteiro.map((roteiro: ApiInterface) => {
+          this.listaApiRoteiro = dadosRoteiro.map((roteiro: ApiInterface) => {
             return {
               id: roteiro.id,
               cliente: roteiro.cliente,
@@ -71,12 +69,15 @@ export class RoteiroHome implements OnInit {
               troco: roteiro.troco || 0,
               vendedor: roteiro.vendedor,
               responsavel: roteiro.responsavel,
-              periodo: roteiro.periodo
+              periodo: roteiro.periodo,
+              data: roteiro.data,
+              entregue: roteiro.entregue || false // Define como '0' se não estiver presente
             };
           }).sort((a, b) => a.periodo.localeCompare(b.periodo));
 
           //console.log("Lenth => " + this.listaDeRoteiros.length);
-          this.listaDeRoteiros.forEach((roteiro) => {
+          console.log("Roteiros => ", this.listaApiRoteiro);
+          this.listaApiRoteiro.forEach((roteiro) => {
             switch(roteiro.periodo){
               case '1':
                 this.entregas1.push(roteiro);
@@ -98,7 +99,7 @@ export class RoteiroHome implements OnInit {
 
           this._cdr.detectChanges();
         } else {
-          this.listaDeRoteiros = []; // Limpa a lista caso não retorne dados
+          this.listaApiRoteiro = []; // Limpa a lista caso não retorne dados
           this._cdr.detectChanges();
         }
       },

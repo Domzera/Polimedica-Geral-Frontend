@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RoteiroService } from '../roteiro-service/service';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiInterface } from '../roteiro-models/api-model';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -55,7 +55,7 @@ export class RoteiroUpdate implements OnInit {
     });
   }
 
-  carregaForm(result: RoteiroInterface) {
+  carregaForm(result: ApiInterface) {
   this.roteiroForm.patchValue({
       id: result.id,
       cliente: result.cliente,
@@ -84,7 +84,6 @@ export class RoteiroUpdate implements OnInit {
 
     this.roteiroSerevice.updateRoteiro(dados.id, dados).subscribe({
       next: () => {
-        console.log('Dados enviados para atualização:', dados);
         this.router.navigate(['/roteiro'])
       },
       error: (err) => window.alert('Erro ao salvar: ' + err.message),

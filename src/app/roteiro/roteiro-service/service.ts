@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models'
 import { map, Observable } from 'rxjs';
 import { ApiInterface } from '../roteiro-models/api-model';
 
@@ -11,10 +10,10 @@ export class RoteiroService {
   private readonly _http = inject(HttpClient);
   private readonly _url = 'http://192.168.1.37:82/polimedica';
 
-  addRoteiro(roteiro: RoteiroInterface) {
+  addRoteiro(roteiro: ApiInterface) {
     const url = `${this._url}/roteiro`;
     
-    return this._http.post<RoteiroInterface>(url, roteiro, { responseType: 'text' });
+    return this._http.post<ApiInterface>(url, roteiro, { responseType: 'text' });
   }
 
   getRoteiro(data?: Date): Observable<ApiInterface[]> {
@@ -33,17 +32,17 @@ export class RoteiroService {
     return this._http.delete<number>(url, {responseType: 'json'});
   }
 
-  getRoteiroById(id:number): Observable<RoteiroInterface>{
+  getRoteiroById(id:number): Observable<ApiInterface>{
     const url = `${this._url}/roteiro/${id}`;
 
     return this._http
-    .get<{value: RoteiroInterface}>(url, {responseType: 'json'})
+    .get<{value: ApiInterface}>(url, {responseType: 'json'})
     .pipe(map(resp => resp.value));
   }
 
-  updateRoteiro(id: number, dados: RoteiroInterface): Observable<string> {
+  updateRoteiro(id: number, dados: ApiInterface): Observable<ApiInterface> {
     console.log('Dados enviados para atualização:', dados);
     const url = `${this._url}/roteiro/${id}`;
-    return this._http.put(url, dados, { responseType: 'text' });
+    return this._http.put<ApiInterface>(url, dados, { responseType: 'text' });
   }
 }

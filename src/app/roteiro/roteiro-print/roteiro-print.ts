@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models'
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../components/button-component/button-component';
-import { CurrencyPipe } from '@angular/common'; 
+import { CurrencyPipe } from '@angular/common';
+import { ApiInterface } from '../roteiro-models/api-model';
 
 @Component({
   imports: [ButtonComponent,CurrencyPipe ],
@@ -11,9 +11,9 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './roteiro-print.html',
 })
 export class RoteiroPrint {
-  roteiros: RoteiroInterface[]=[];
+  roteiros: ApiInterface[]=[];
   periodo: string ='';
-  entregas:RoteiroInterface[]=[];
+  entregas:ApiInterface[]=[];
 
    imprimir(): void {
     window.print(); // Abre a tela de impressão do navegador
@@ -24,7 +24,7 @@ export class RoteiroPrint {
     const dados = navegacao?.extras.state;
 
     if(dados){
-      this.roteiros = dados['roteiros'].sort((a: RoteiroInterface, b: RoteiroInterface) => a.cidade.localeCompare(b.cidade) || a.bairro.localeCompare(b.bairro));
+      this.roteiros = dados['roteiros'].sort((a: ApiInterface, b: ApiInterface) => a.cidade.localeCompare(b.cidade) || a.bairro.localeCompare(b.bairro));
       this.periodo = dados['periodo'];
     }
   }

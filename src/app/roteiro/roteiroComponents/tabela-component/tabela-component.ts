@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ButtonComponent } from '../../../components/button-component/button-component';
 import { RouterLink } from '@angular/router';
-import { RoteiroInterface } from '../../roteiro-models/roteiro-models';
 import { RoteiroService } from '../../roteiro-service/service';
 import { CurrencyPipe } from '@angular/common';
+import { ApiInterface } from '../../roteiro-models/api-model';
 
 @Component({
   imports: [RouterLink, ButtonComponent, CurrencyPipe],
@@ -12,27 +12,13 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './tabela-component.html',
 })
 export class TabelaComponent {
-  @Input() roteiros: RoteiroInterface[]=[];
+  @Input() roteiros: ApiInterface[]=[];
   id!:number;
 
    constructor(
     private roteiroService: RoteiroService,
     private _cdr: ChangeDetectorRef
-  ){
-    console.log("Roteiros => ", this.roteiros);
-  }
-
-  // if(roteiros[0].periodo === '1'){
-  //   console.log("Periodo 1 => ", roteiros[0].periodo);
-  // } else if(roteiros[0].periodo === '2'){
-  //   console.log("Periodo 2 => ", roteiros[0].periodo);
-  // } else if(roteiros[0].periodo === '3'){
-  //   console.log("Periodo 3 => ", roteiros[0].periodo);
-  // } else if(roteiros[0].periodo === '4'){
-  //   console.log("Periodo 4 => ", roteiros[0].periodo);
-  // } else if(roteiros[0].periodo === '5'){
-  //   console.log("Periodo 5 => ", roteiros[0].periodo);
-  // }
+  ){  }
 
   dispararClique() {
     this.confirmaDelete(this.id);

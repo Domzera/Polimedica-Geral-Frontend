@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { RoteiroInterface } from '../roteiro-models/roteiro-models';
 import { RoteiroService } from '../roteiro-service/service';
+import { ApiInterface } from '../roteiro-models/api-model';
 
 @Injectable()
 export class RoteiroAddService {
       constructor(private readonly roteiroService: RoteiroService) {}
   
-  setRoteiro(roteiro: RoteiroInterface) {
+  setRoteiro(roteiro: ApiInterface) {
     
     // Depois envir para o post.
     this.roteiroService.addRoteiro(roteiro).subscribe({

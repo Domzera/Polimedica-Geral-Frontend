@@ -12,6 +12,6 @@ export interface ApiInterface {
     vendedor?: string;
     responsavel?: string;
     data?: string;
-    entregue?: string;
+    entregue?: boolean;
     periodo: string;
 }
