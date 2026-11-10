@@ -40,8 +40,8 @@ export class RoteiroUpdate implements OnInit {
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
       if (id) {this.carregar(id);}
-    });
-  }
+      });
+    }
 
   carregar = (id: number) => {
     this.roteiroSerevice.getRoteiroById(id).subscribe({

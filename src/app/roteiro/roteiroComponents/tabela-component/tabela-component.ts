@@ -12,20 +12,20 @@ import { ApiInterface } from '../../roteiro-models/api-model';
   templateUrl: './tabela-component.html',
 })
 export class TabelaComponent {
-  @Input() roteiros: ApiInterface[]=[];
-  id!:number;
+  @Input() roteiros: ApiInterface[] = [];
+  id!: number;
 
-   constructor(
+  constructor(
     private roteiroService: RoteiroService,
     private _cdr: ChangeDetectorRef
-  ){  }
+  ) { }
 
   dispararClique() {
     this.confirmaDelete(this.id);
     this._cdr.detectChanges();
   }
 
-  confirmaDelete(idD:number) {
+  confirmaDelete(idD: number) {
     this.id = idD;
     console.log("Id Delete => " + this.id);
     const aceitou = window.confirm('Deseja realmente excluir este item?' + this.id);
@@ -33,8 +33,9 @@ export class TabelaComponent {
     if (aceitou) {
       this.roteiroService.deleteRoteiro(this.id).subscribe({
         next: (result) => {
-          if(result === 1){
-            this._cdr.detectChanges();}
+          if (result === 1) {
+            this._cdr.detectChanges();
+          }
         },
         error: (err) => {
           console.log('Error => ', err.message.toString());
@@ -42,4 +43,6 @@ export class TabelaComponent {
       });
     }
   }
+
+  reagendarRoteiro(arg0: number) {}
 }

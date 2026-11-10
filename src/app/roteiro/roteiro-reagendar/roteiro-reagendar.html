@@ -1,0 +1,47 @@
+<div>
+  @if(roteiro) {
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Cidade</th>
+        <th>Bairro</th>
+        <th>Observação</th>
+        <th>Cartão</th>
+        <th>Loja Polimedica</th>
+        <th>Pedido NF</th>
+        <th>Dinheiro/Cheque</th>
+        <th>Troco</th>
+        <th>Vendedor</th>
+        <th>Responsável</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ roteiro?.cliente }}</td>
+        <td>{{ roteiro?.cidade }}</td>
+        <td>{{ roteiro?.bairro }}</td>
+        <td>{{ roteiro?.observacao }}</td>
+        <td>{{ roteiro?.cartao }}</td>
+        <td>{{ roteiro?.lojaPolimedica }}</td>
+        <td>{{ roteiro?.pedidoNf }}</td>
+        <td>{{ roteiro?.dinheiroCheque }}</td>
+        <td>{{ roteiro?.troco }}</td>
+        <td>{{ roteiro?.vendedor }}</td>
+        <td>{{ roteiro?.responsavel }}</td>
+      </tr>
+      <tr class="dataChange">
+        <td colspan="2">Data atual</td>
+        <td colspan="2">{{ roteiro?.data }}</td>
+        <td></td>
+        <td colspan="2">Nova data</td>
+        <td colspan="2"><input type="date" id="agenda" name="agenda" [(ngModel)]="dataSelecionada"></td>
+        <td colspan="2"><button (click)="reagendar()">Reagendar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  }
+</div>
+<div>
+  <!-- <input type="calendar" [(ngModel)]="dataSelecionada" (change)="onDataChange()" /> -->
+</div>
