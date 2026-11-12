@@ -1,26 +1,45 @@
-<div class="home-roteiro">
-    <div>
-    <h2>Roteiro de Entregas</h2>
-    <div>
-        <h2>Data do roteiro: {{ today | date: 'dd/MM/yyyy' }}</h2>
-        
-        <!-- Vincula ao FormGroup correto: 'data' -->
-        <div [formGroup]="data"> 
-            <label for="novaData">Escolha outra data de roteiro => </label>
-            
-            <!-- formControlName alterado para o nome correto declarado no TS: 'dataSelecionada' -->
-            <input type="date" id="novaData" formControlName="dataSelecionada">
-        </div>
-        <br>
-    </div>
+<h1 class="roteiro-title">Roteiro de Entregas</h1>
+<table>
+    <tr>
+        <td class="home-roteiro">
+            <div>
+                <h2>Data do roteiro: {{ today | date: 'dd/MM/yyyy' }}</h2>
+
+                <!-- Vincula ao FormGroup correto: 'data' -->
+                <div [formGroup]="data">
+                    <label for="novaData">Escolha outra data de roteiro => </label>
+
+                    <!-- formControlName alterado para o nome correto declarado no TS: 'dataSelecionada' -->
+                    <input type="date" id="novaData" formControlName="dataSelecionada">
+                </div>
+                <br>
+            </div>
+        </td>
+        <td class="home-roteiro">
+            <h2>Pesquisas</h2>
+            <div>
+                <div class="pesquisa">
+                    <label for="pesquisaNome">Por nome: </label>
+                    <input type="text" id="pesquisaNome" [(ngModel)]="pesquisaNome" placeholder="Digite o nome do paciente">
+                </div>
+                <div class="pesquisa">
+                    <label for="pesquisaPedido">Por Pedido ou Orçamento: </label>
+                    <input type="text" id="pesquisaPedido" [(ngModel)]="pesquisaPedido" placeholder="Digite o nome do cliente">
+                </div>
+                <div>
+                    <app-button-component intext="Pesquisar" (click)="pesquisar()" />
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="botoes">
+    <div routerLink="/roteiro/adicionar"><app-button-component intext="Adicionar ao Roteiro" /></div>
 </div>
-    <div class="botoes">
-        <div routerLink="/roteiro/adicionar"><app-button-component intext="Adicionar ao Roteiro"/></div>
-    </div>
-    <br>
+<br>
+<div>
     <div>
-        <div>
-            <app-tabela-component [roteiros]="listaApiRoteiro"/>
-        </div>
+        <app-tabela-component [roteiros]="listaApiRoteiro" />
     </div>
 </div>

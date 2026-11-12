@@ -1,11 +1,28 @@
+.roteiro-title {
+  text-align: center;
+  margin-top: 25px;
+}
 .botoes {
   display: flex;
   justify-content: left;
   gap: 20px;
+}
+.home-roteiro {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 18px;
+  width: 70%;
 }
 
 a{
   margin: 10px;
   text-decoration: none;
   color: #000;
+}
+
+input {
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px;
+    box-sizing: border-box;
 }

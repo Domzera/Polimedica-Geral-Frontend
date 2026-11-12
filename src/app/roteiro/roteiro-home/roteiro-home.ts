@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiInterface } from '../roteiro-models/api-model';
 import { RoteiroService } from '../roteiro-service/service';
@@ -8,7 +8,7 @@ import { ButtonComponent } from '../../components/button-component/button-compon
 import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-component';
 
 @Component({
-  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent],
+  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent, FormsModule],
   standalone: true,
   selector: 'app-roteiro-home',
   styleUrl: './roteiro-home.scss',
@@ -17,11 +17,13 @@ import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-co
 export class RoteiroHome implements OnInit {
   listaApiRoteiro: ApiInterface[] = [];
   //Separação de periodos de entrega
-  entregas1: ApiInterface[]=[];
-  entregas2: ApiInterface[]=[];
-  entregas3: ApiInterface[]=[];
-  entregas4: ApiInterface[]=[];
-  entregas5: ApiInterface[]=[];
+  entregas1: ApiInterface[] = [];
+  entregas2: ApiInterface[] = [];
+  entregas3: ApiInterface[] = [];
+  entregas4: ApiInterface[] = [];
+  entregas5: ApiInterface[] = [];
+  pesquisaNome: string = '';
+  pesquisaPedido: string = '';
 
   // Instanciamos o FormGroup
   data = new FormGroup({
@@ -78,7 +80,7 @@ export class RoteiroHome implements OnInit {
           //console.log("Lenth => " + this.listaDeRoteiros.length);
           console.log("Roteiros => ", this.listaApiRoteiro);
           this.listaApiRoteiro.forEach((roteiro) => {
-            switch(roteiro.periodo){
+            switch (roteiro.periodo) {
               case '1':
                 this.entregas1.push(roteiro);
                 break;
@@ -94,7 +96,7 @@ export class RoteiroHome implements OnInit {
               case '5':
                 this.entregas5.push(roteiro);
                 break;
-              }
+            }
           });
 
           this._cdr.detectChanges();
@@ -108,5 +110,27 @@ export class RoteiroHome implements OnInit {
         window.confirm('O Erro foi: ' + err);
       }
     });
+  }
+
+  pesquisar(): void {
+    // O .trim() remove espaços em branco extras antes e depois do texto
+    const nome = this.pesquisaNome?.trim();
+    const pedido = this.pesquisaPedido?.trim();
+
+    if (nome) {
+      console.log('Pesquisa por nome de cliente: ', { nome });
+      this.pesquisaNome="";
+      // Sua lógica caso ambos estejam preenchidos (ex: mostrar alerta ou priorizar um)
+      // Atualiza a listaApiRoteiro
+    } else if (pedido) {
+      console.log('Pesquisando por numero de Pedido ou Orçamento: ', pedido);
+      this.pesquisaPedido="";
+      // Chame aqui o serviço/função de busca por nome
+      // Atualiza a listaApiRoteiro
+    } else {
+      console.log('Nenhum campo foi preenchido.');
+      // Lógica caso o usuário clique sem digitar nada (ex: listar todos ou exibir aviso)
+    }
+
   }
 }

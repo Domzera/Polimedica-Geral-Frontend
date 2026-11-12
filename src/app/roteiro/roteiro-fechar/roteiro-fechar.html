@@ -41,18 +41,57 @@
                     <th class="item">{{ item.cidade }}</th>
                     <th class="item">{{ item.bairro }}</th>
                     <th class="item">{{ item.observacao }}</th>
-                    <th class="item">@if(item && item.cartao !== undefined && item.cartao !== null && item.cartao !== 0){ {{ item.cartao | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">@if(item && item.cartao !== undefined && item.cartao !== null && item.cartao !==
+                        0){ {{ item.cartao | currency:'BRL' }} } @else{ - }</th>
                     <th class="item">{{ item.lojaPolimedica }}</th>
                     <th class="item">{{ item.pedidoNf }}</th>
-                    <th class="item">@if(item && item.dinheiroCheque !== undefined && item.dinheiroCheque !== null && item.dinheiroCheque !== 0){ {{ item.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
-                    <th class="item">@if(item && item.troco !== undefined && item.troco !== null && item.troco !== 0 ){ {{ item.troco | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">@if(item && item.dinheiroCheque !== undefined && item.dinheiroCheque !== null &&
+                        item.dinheiroCheque !== 0){ {{ item.dinheiroCheque | currency:'BRL' }} } @else{ - }</th>
+                    <th class="item">@if(item && item.troco !== undefined && item.troco !== null && item.troco !== 0 ){
+                        {{ item.troco | currency:'BRL' }} } @else{ - }</th>
                     <th class="item">{{ item.vendedor }}</th>
                     <th class="item">{{ item.responsavel }}</th>
                     <th class="item">
-                    <th><app-button-component (click)="Entregar(item)" intext="entregue" /></th>
+                        @if(item.entregue == false){
+                    <th style="border: none;"><app-button-component (click)="Entregar(item)" intext="Entregue" /></th>
+                    }@else {<th class="item botao">Fechado</th>}
+
                 </tr>
                 }
                 }
+            </table>
+        </div>
+        <br>
+        <div>
+            <table class="tabela-fechamento">
+                <tr>
+                    <th></th>
+                    <th>Dinheiro</th>
+                    <th>Troco</th>
+                    <th>Cartão</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Loja</td>
+                    <td>{{ dinheiroLoja | currency:'BRL' }}</td>
+                    <td>{{ trocoLoja | currency:'BRL' }}</td>
+                    <td>{{ cartaoLoja | currency:'BRL' }}</td>
+                    <td>{{ totalLoja | currency:'BRL' }}</td>
+                </tr>
+                <tr>
+                    <td>Polimédica</td>
+                    <td>{{ dinheiroPoli | currency:'BRL' }}</td>
+                    <td>{{ trocoPoli | currency:'BRL' }}</td>
+                    <td>{{ cartaoPoli | currency:'BRL' }}</td>
+                    <td>{{ totalPoli | currency:'BRL' }}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ dinheiro | currency:'BRL' }}</td>
+                    <td>{{ troco | currency:'BRL' }}</td>
+                    <td>{{ cartao | currency:'BRL' }}</td>
+                    <td>{{ total | currency:'BRL' }}</td>
+                </tr>
             </table>
         </div>
     </div>

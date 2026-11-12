@@ -50,11 +50,8 @@
                         <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)"></app-button-component>
                         </th>
                     } @else{
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="cliente" colspan="3">Fechado</th>
                     }
-                </tr>
             }
         }
         
@@ -89,15 +86,13 @@
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
                     @if(roteiro.entregue == false){
-                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component></th>
+                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component>
                         <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar"/></th>
                         <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)"></app-button-component>
+                        </th>
                     } @else{
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="cliente" colspan="3">Fechado</th>
                     }
-                </tr>
             }
         }
 
@@ -131,15 +126,13 @@
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
                     @if(roteiro.entregue == false){
-                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component></th>
+                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component>
                         <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar"/></th>
                         <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)"></app-button-component>
+                        </th>
                     } @else{
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="cliente" colspan="3">Fechado</th>
                     }
-                </tr>
             }
         }
 
@@ -173,16 +166,13 @@
                     <th class="cliente">{{ roteiro.vendedor }}</th>
                     <th class="cliente">{{ roteiro.responsavel }}</th>
                     @if(roteiro.entregue == false){
-                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component></th>
+                        <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component>
                         <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar"/></th>
                         <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)"></app-button-component>
-
+                        </th>
                     } @else{
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="cliente" colspan="3">Fechado</th>
                     }
-                </tr>
             }
         }
 
@@ -219,12 +209,10 @@
                         <th class="cliente" routerLink="/roteiro/reagendar/{{ roteiro.id }}"><app-button-component intext="Reagendar"></app-button-component>
                         <th class="cliente" routerLink="/roteiro/editar/{{ roteiro.id }}"><app-button-component intext="Editar"/></th>
                         <th class="cliente"><app-button-component intext="Apagar" (onClick)="confirmaDelete(roteiro.id)"></app-button-component>
+                        </th>
                     } @else{
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th class="cliente" colspan="3">Fechado</th>
                     }
-                </tr>
             }
         }
     }

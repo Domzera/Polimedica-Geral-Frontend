@@ -6,18 +6,31 @@
   width: 100%;
 }
 .item {
-  font-size: 12px;
+  font-size: 18px;
   font-weight:100;
 }
+.botao {
+  border: none;
+}
+.totais {
+    display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+.tabela-fechamento{
+  border: solid 2px;
+  width: 50%;
+  font-size: 20px;
+  padding: 5px;
+}
 table, th, td {
-  margin:20px auto;
   border: 1px solid black;
   border-collapse: collapse;
-  font-size: 16px;
-  padding: 5px;
 }
 th{
    text-align: left;
+   padding: 5px;
 }
 tr:nth-child(even) {
   background-color: #aff39c;
