@@ -13,6 +13,7 @@ import { ApiInterface } from '../../roteiro-models/api-model';
 })
 export class TabelaComponent {
   @Input() roteiros: ApiInterface[] = [];
+  @Input() quantidades:number[]=[];
   id!: number;
 
   constructor(

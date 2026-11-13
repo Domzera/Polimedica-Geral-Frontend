@@ -49,16 +49,18 @@ export class RoteiroFechar {
         }
         this.total = this.dinheiro + this.troco
         if(item.lojaPolimedica == "Polimédica"){
+          if(item.periodo == this.periodo){
           this.dinheiroPoli += item.dinheiroCheque!;
           this.trocoPoli += item.troco!;
           this.cartaoPoli += item.cartao!;
-        }
+        }}
         this.totalPoli = this.dinheiroPoli + this.trocoPoli;        
         if(item.lojaPolimedica == "Loja"){
+          if(item.periodo == this.periodo){
           this.dinheiroLoja += item.dinheiroCheque!;
           this.trocoLoja += item.troco!;
           this.cartaoLoja += item.cartao!;
-        }
+        }}
         this.totalLoja = this.dinheiroLoja + this.trocoLoja;
       })
     }

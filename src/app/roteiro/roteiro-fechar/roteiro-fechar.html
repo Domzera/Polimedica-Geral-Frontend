@@ -68,29 +68,33 @@
                     <th></th>
                     <th>Dinheiro</th>
                     <th>Troco</th>
-                    <th>Cartão</th>
                     <th>Total</th>
+                    <th></th>
+                    <th>Cartão</th>
                 </tr>
                 <tr>
                     <td>Loja</td>
                     <td>{{ dinheiroLoja | currency:'BRL' }}</td>
                     <td>{{ trocoLoja | currency:'BRL' }}</td>
-                    <td>{{ cartaoLoja | currency:'BRL' }}</td>
                     <td>{{ totalLoja | currency:'BRL' }}</td>
+                    <td></td>
+                    <td>{{ cartaoLoja | currency:'BRL' }}</td>
                 </tr>
                 <tr>
                     <td>Polimédica</td>
                     <td>{{ dinheiroPoli | currency:'BRL' }}</td>
                     <td>{{ trocoPoli | currency:'BRL' }}</td>
-                    <td>{{ cartaoPoli | currency:'BRL' }}</td>
                     <td>{{ totalPoli | currency:'BRL' }}</td>
+                    <td></td>
+                    <td>{{ cartaoPoli | currency:'BRL' }}</td>
                 </tr>
                 <tr>
                     <td>Total</td>
                     <td>{{ dinheiro | currency:'BRL' }}</td>
                     <td>{{ troco | currency:'BRL' }}</td>
-                    <td>{{ cartao | currency:'BRL' }}</td>
                     <td>{{ total | currency:'BRL' }}</td>
+                    <td></td>
+                    <td>{{ cartao | currency:'BRL' }}</td>
                 </tr>
             </table>
         </div>

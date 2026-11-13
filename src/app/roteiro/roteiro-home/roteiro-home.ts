@@ -24,6 +24,7 @@ export class RoteiroHome implements OnInit {
   entregas3: ApiInterface[] = [];
   entregas4: ApiInterface[] = [];
   entregas5: ApiInterface[] = [];
+  quantidades: number[] = [];
   pesquisaNome: string = '';
   pesquisaPedido: string = '';
 
@@ -106,7 +107,12 @@ export class RoteiroHome implements OnInit {
                 break;
             }
           });
-
+          this.quantidades[0] = this.entregas1.length;
+          this.quantidades[1] = this.entregas2.length;
+          this.quantidades[2] = this.entregas3.length;
+          this.quantidades[3] = this.entregas4.length;
+          this.quantidades[4] = this.entregas5.length;
+            
           this._cdr.detectChanges();
         } else {
           this.listaApiRoteiro = []; // Limpa a lista caso não retorne dados

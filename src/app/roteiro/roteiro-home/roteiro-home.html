@@ -33,6 +33,14 @@
                 </div>
             </div>
         </td>
+        <td class="home-roteiro">
+            <h4>Quantidades de entregas por periodo:</h4>
+        @if(quantidades[0]>=1){<p>Entregas antes das 10:00h => {{quantidades[0]}}</p>}
+        @if(quantidades[1]>=1){<p>Entregas depois das 10:30h => {{quantidades[1]}}</p>}
+        @if(quantidades[2]>=1){<p>Entregas depois das 13:30h => {{quantidades[2]}}</p>}
+        @if(quantidades[3]>=1){<p>Entregas finais => {{quantidades[3]}}</p>}
+        @if(quantidades[4]>=1){<p>Entregas EXTRAS => {{quantidades[4]}}</p>}
+        </td>
     </tr>
 </table>
 
@@ -45,7 +53,10 @@
         @if (listaPesquisa.length >= 1) {
         <app-tabela-pesquisa [pesquisa]="listaPesquisa" />
         } @else if (listaApiRoteiro.length >= 1) {
-        <app-tabela-component [roteiros]="listaApiRoteiro" />
+        <app-tabela-component [roteiros]="listaApiRoteiro" [quantidades]="quantidades" />
         }
     </div>
 </div>
+<br>
+<br>
+<br>
