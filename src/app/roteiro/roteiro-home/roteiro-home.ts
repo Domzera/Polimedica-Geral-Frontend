@@ -6,9 +6,10 @@ import { RoteiroService } from '../roteiro-service/service';
 import { RouterLink } from '@angular/router';
 import { ButtonComponent } from '../../components/button-component/button-component';
 import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-component';
+import { TabelaPesquisa } from '../roteiroComponents/tabela-pesquisa/tabela-pesquisa';
 
 @Component({
-  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent, FormsModule],
+  imports: [RouterLink, CommonModule, ReactiveFormsModule, ButtonComponent, TabelaComponent, FormsModule,TabelaPesquisa],
   standalone: true,
   selector: 'app-roteiro-home',
   styleUrl: './roteiro-home.scss',
@@ -16,6 +17,7 @@ import { TabelaComponent } from '../roteiroComponents/tabela-component/tabela-co
 })
 export class RoteiroHome implements OnInit {
   listaApiRoteiro: ApiInterface[] = [];
+  listaPesquisa: ApiInterface[] = [];
   //Separação de periodos de entrega
   entregas1: ApiInterface[] = [];
   entregas2: ApiInterface[] = [];
@@ -53,8 +55,14 @@ export class RoteiroHome implements OnInit {
   buscarRoteiros(dataParaBusca: Date) {
     this._service.getRoteiro(dataParaBusca).subscribe({
       next: (result: any) => {
-
+        this.listaPesquisa = [];
+        
         const dadosRoteiro = result.value;
+        this.entregas1 = [];
+        this.entregas2 = [];
+        this.entregas3 = [];
+        this.entregas4 = [];
+        this.entregas5 = [];
 
         if (dadosRoteiro && Array.isArray(dadosRoteiro)) {
           this.listaApiRoteiro = dadosRoteiro.map((roteiro: ApiInterface) => {
@@ -113,24 +121,117 @@ export class RoteiroHome implements OnInit {
   }
 
   pesquisar(): void {
-    // O .trim() remove espaços em branco extras antes e depois do texto
     const nome = this.pesquisaNome?.trim();
     const pedido = this.pesquisaPedido?.trim();
 
     if (nome) {
       console.log('Pesquisa por nome de cliente: ', { nome });
-      this.pesquisaNome="";
-      // Sua lógica caso ambos estejam preenchidos (ex: mostrar alerta ou priorizar um)
-      // Atualiza a listaApiRoteiro
+
+      this._service.getCliente(nome).subscribe({
+        next: (result: any) => {
+
+          const nomes = Array.isArray(result?.value) ? result.value : [];
+
+          console.log('Lista pesquisa bruta ', nomes);
+          if (nomes.length > 0 && Array.isArray(nomes)) {
+            this.listaApiRoteiro = [];
+            this.listaPesquisa = nomes.map((dadosNomes: ApiInterface) => {
+              return{id: dadosNomes.id,
+              cliente: dadosNomes.cliente,
+              cidade: dadosNomes.cidade,
+              bairro: dadosNomes.bairro,
+              observacao: dadosNomes.observacao,
+              cartao: dadosNomes.cartao || 0,
+              lojaPolimedica: dadosNomes.lojaPolimedica,
+              pedidoNf: dadosNomes.pedidoNf,
+              dinheiroCheque: dadosNomes.dinheiroCheque || 0,
+              troco: dadosNomes.troco || 0,
+              vendedor: dadosNomes.vendedor,
+              responsavel: dadosNomes.responsavel,
+              periodo:dadosNomes.periodo == '1' ? "Entregas antes das 10:00h":
+                dadosNomes.periodo == '2' ? "Entregas depois das 10:30h":
+                dadosNomes.periodo == '3' ? "Entregas depois das 13:30h":
+                dadosNomes.periodo == '4' ? "Entregas finais": "Entregas EXTRAS",
+              data: dadosNomes.data,
+              entregue: dadosNomes.entregue || false // Define como '0' se não estiver presente}
+              };
+            }).sort((a, b) => String(b.data || '').localeCompare(String(a.data || '')))
+
+            this._cdr.detectChanges();
+            this.pesquisaNome = "";
+            console.log("Roteiros => ", this.listaPesquisa);
+            
+          }else{
+            this.listaPesquisa = [];
+            this._cdr.detectChanges();
+            window.alert(`Cliente ${nome} não encontrado`)
+            this.pesquisaNome="";
+          }
+            this._cdr.detectChanges();
+          },
+          error: (err) => {
+            console.error('Erro na requisição getCliente:', err);
+            this.listaPesquisa = [];
+            this._cdr.detectChanges();
+          }
+      });
     } else if (pedido) {
-      console.log('Pesquisando por numero de Pedido ou Orçamento: ', pedido);
-      this.pesquisaPedido="";
-      // Chame aqui o serviço/função de busca por nome
-      // Atualiza a listaApiRoteiro
+      console.log('Pesquisa por numero de Pedido/Orçamento: ', { pedido });
+
+      this._service.getPedido(pedido).subscribe({
+        next: (result: any) => {
+
+          const pedidos = Array.isArray(result?.value) ? result.value : [];
+
+          console.log('Lista pesquisa bruta ', pedidos);
+          if (pedidos.length > 0 && Array.isArray(pedidos)) {
+            this.listaApiRoteiro = [];
+            this.listaPesquisa = pedidos.map((dadosPedido: ApiInterface) => {
+              return{id: dadosPedido.id,
+              cliente: dadosPedido.cliente,
+              cidade: dadosPedido.cidade,
+              bairro: dadosPedido.bairro,
+              observacao: dadosPedido.observacao,
+              cartao: dadosPedido.cartao || 0,
+              lojaPolimedica: dadosPedido.lojaPolimedica,
+              pedidoNf: dadosPedido.pedidoNf,
+              dinheiroCheque: dadosPedido.dinheiroCheque || 0,
+              troco: dadosPedido.troco || 0,
+              vendedor: dadosPedido.vendedor,
+              responsavel: dadosPedido.responsavel,
+              periodo:dadosPedido.periodo == '1' ? "Entregas antes das 10:00h":
+                dadosPedido.periodo == '2' ? "Entregas depois das 10:30h":
+                dadosPedido.periodo == '3' ? "Entregas depois das 13:30h":
+                dadosPedido.periodo == '4' ? "Entregas finais": "Entregas EXTRAS",
+              data: dadosPedido.data,
+              entregue: dadosPedido.entregue || false // Define como '0' se não estiver presente}
+              };
+            }).sort((a, b) => String(b.data || '').localeCompare(String(a.data || '')))
+
+            this._cdr.detectChanges();
+            this.pesquisaPedido = "";
+            console.log("Roteiros => ", this.listaPesquisa);
+            
+          }else{
+            this.listaPesquisa = [];
+            this._cdr.detectChanges();
+            window.alert(`Pedido/Orçamento ${pedido} não encontrado`)
+            this.pesquisaNome="";
+          }
+            this._cdr.detectChanges();
+          },
+          error: (err) => {
+            console.error('Erro na requisição getCliente:', err);
+            this.listaPesquisa = [];
+            this._cdr.detectChanges();
+          }
+      });
+      this.pesquisaPedido = "";
     } else {
       console.log('Nenhum campo foi preenchido.');
       // Lógica caso o usuário clique sem digitar nada (ex: listar todos ou exibir aviso)
+      this.pesquisaPedido = "";
+      this.pesquisaNome = "";
     }
-
   }
 }

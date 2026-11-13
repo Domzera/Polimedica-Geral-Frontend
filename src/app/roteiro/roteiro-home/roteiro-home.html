@@ -20,11 +20,13 @@
             <div>
                 <div class="pesquisa">
                     <label for="pesquisaNome">Por nome: </label>
-                    <input type="text" id="pesquisaNome" [(ngModel)]="pesquisaNome" placeholder="Digite o nome do paciente">
+                    <input type="text" id="pesquisaNome" [(ngModel)]="pesquisaNome"
+                        placeholder="Cliente">
                 </div>
                 <div class="pesquisa">
                     <label for="pesquisaPedido">Por Pedido ou Orçamento: </label>
-                    <input type="text" id="pesquisaPedido" [(ngModel)]="pesquisaPedido" placeholder="Digite o nome do cliente">
+                    <input type="text" id="pesquisaPedido" [(ngModel)]="pesquisaPedido"
+                        placeholder="nº Pedido/Orçamento">
                 </div>
                 <div>
                     <app-button-component intext="Pesquisar" (click)="pesquisar()" />
@@ -40,6 +42,10 @@
 <br>
 <div>
     <div>
+        @if (listaPesquisa.length >= 1) {
+        <app-tabela-pesquisa [pesquisa]="listaPesquisa" />
+        } @else if (listaApiRoteiro.length >= 1) {
         <app-tabela-component [roteiros]="listaApiRoteiro" />
+        }
     </div>
 </div>

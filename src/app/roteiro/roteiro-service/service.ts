@@ -12,7 +12,7 @@ export class RoteiroService {
   private readonly _url = 'http://192.168.1.37:82/polimedica/roteiro';
 
   addRoteiro(roteiro: ApiInterface) {
-    const url = `${this._url}`;
+    const url = `${this._urlcrud}`;
     
     return this._http.post<ApiInterface>(url, roteiro, { responseType: 'text' });
   }
